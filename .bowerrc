@@ -1,0 +1,5 @@
+{
+  "proxy":"http://proxypool1.mecon.ar:8080",
+  "https-proxy":"http://proxypool1.mecon.ar:8080",
+  "directory": "bower_components"
+}
