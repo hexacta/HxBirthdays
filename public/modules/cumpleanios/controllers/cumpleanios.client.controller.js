@@ -58,6 +58,9 @@ angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$s
 
 		// Find existing Cumpleanio
 		$scope.findOne = function() {
+
+			console.log("Lista de cumpleaños: " + $stateParams.cumpleanioId);
+
 			$scope.cumpleanio = Cumpleanios.get({ 
 				cumpleanioId: $stateParams.cumpleanioId
 			});

@@ -10,6 +10,10 @@ var mongoose = require('mongoose'),
  * Cumpleanio Schema
  */
 var CumpleanioSchema = new Schema({
+	id: {
+		type: Number,
+		default: 0
+	},
 	firstname: {
 		type: String,
 		default: ''
@@ -29,6 +33,10 @@ var CumpleanioSchema = new Schema({
 	collecting: {
 		type: Boolean,
 		default: false
+	},
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
 	}
 });
 

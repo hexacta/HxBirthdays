@@ -2,8 +2,8 @@
 	<div class="page-header">
 		<h1 data-ng-bind="cumpleanio.name"></h1>
 	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == cumpleanio.user._id))">
-		<a class="btn btn-primary" href="/#!/cumpleanios/{{cumpleanio._id}}/edit">
+	<div class="pull-right" >
+		<a class="btn btn-primary" href="/#!/cumpleanios/{{cumpleanio.id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
 		<a class="btn btn-primary" data-ng-click="remove();">
