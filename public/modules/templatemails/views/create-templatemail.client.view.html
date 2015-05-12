@@ -6,9 +6,15 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                    <label class="control-label" for="asunto">Asunto</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="asunto" id="asunto" class="form-control" placeholder="Asunto" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="cuerpo">Contenido del Mail</label>
+                    <div class="controls">
+                        <textarea name="cuerpo" data-ng-model="cuerpo" id="cuerpo" class="form-control" cols="30" rows="10" placeholder="Cuerpo de Mail"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
