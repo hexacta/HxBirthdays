@@ -9,7 +9,8 @@ angular.module('templatemails').controller('TemplatemailsController', ['$scope',
 		$scope.create = function() {
 			// Create new Templatemail object
 			var templatemail = new Templatemails ({
-				name: this.name
+				asunto: this.asunto,
+				cuerpo: this.cuerpo
 			});
 
 			// Redirect after save
@@ -17,7 +18,8 @@ angular.module('templatemails').controller('TemplatemailsController', ['$scope',
 				$location.path('templatemails/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.asunto = '';
+				$scope.cuerpo = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
