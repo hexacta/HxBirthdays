@@ -5,6 +5,10 @@ angular.module('cumpleanios').config(['$stateProvider',
 	function($stateProvider) {
 		// Cumpleanios state routing
 		$stateProvider.
+		state('cumpleanios-no-colectados', {
+			url: '/cumplanios-no-colectados',
+			templateUrl: 'modules/cumpleanios/views/cumpleanios-no-colectados.client.view.html'
+		}).
 		state('listCumpleanios', {
 			url: '/cumpleanios',
 			templateUrl: 'modules/cumpleanios/views/list-cumpleanios.client.view.html'

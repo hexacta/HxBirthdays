@@ -4,13 +4,18 @@
 angular.module('cumpleanios').factory('Cumpleanios', ['$resource',
 	function($resource) {
 
-		console.log("paso por client controller!!!");
-
 		return $resource('cumpleanios/:cumpleanioId', { cumpleanioId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'
 			}
 		});
+	}
+])
+// Defino el servicio para obtener los cumpleaños no colectados
+.factory('CumpleaniosNoColectados', ['$resource',
+	function($resource) {
+
+		return $resource('cumpleanios-no-colectados/');
 	}
 ]);

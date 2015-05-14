@@ -1,8 +1,8 @@
 'use strict';
 
 // Cumpleanios controller
-angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Cumpleanios',
-	function($scope, $stateParams, $location, Authentication, Cumpleanios) {
+angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Cumpleanios', 'CumpleaniosNoColectados',
+	function($scope, $stateParams, $location, Authentication, Cumpleanios, CumpleaniosNoColectados) {
 		$scope.authentication = Authentication;
 
 		// Create new Cumpleanio
@@ -53,17 +53,22 @@ angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$s
 
 		// Find a list of Cumpleanios
 		$scope.find = function() {
+
 			$scope.cumpleanios = Cumpleanios.query();
 		};
 
 		// Find existing Cumpleanio
 		$scope.findOne = function() {
 
-			console.log("Lista de cumpleaños: " + $stateParams.cumpleanioId);
-
 			$scope.cumpleanio = Cumpleanios.get({ 
 				cumpleanioId: $stateParams.cumpleanioId
 			});
+		};
+
+		$scope.cumpleaniosNoColectados = function (){
+
+			$scope.cumpleanios = CumpleaniosNoColectados.query();
+		
 		};
 	}
 ]);

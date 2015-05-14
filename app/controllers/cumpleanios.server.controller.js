@@ -75,7 +75,6 @@ exports.create = function(req, res) {
  * Show the current Cumpleanio
  */
 exports.read = function(req, res) {
-	console.log("paso por read!!!");
 	res.jsonp(req.cumpleanio);
 };
 
@@ -130,7 +129,7 @@ exports.list = function(req, res) {
 			var cumpleaniosSinUsuarioLogueado = [];
 
 			for(var x in nuevosCumpleanios){
-				if(nuevosCumpleanios[x]['name'] !== req.user.username){
+				if(nuevosCumpleanios[x].name !== req.user.username){
 					cumpleaniosSinUsuarioLogueado.push(nuevosCumpleanios[x]);
 				}
 			}
@@ -150,8 +149,6 @@ exports.list = function(req, res) {
  */
 exports.cumpleanioByID = function(req, res, next, id) { 
 
-	console.log("cumpleanioByID!!!!");
-
 	Cumpleanio.findById(id).populate('user', 'displayName').exec(function(err, cumpleanio) {
 		if (err) return next(err);
 		if (! cumpleanio) return next(new Error('Failed to load Cumpleanio ' + id));
@@ -169,3 +166,36 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+
+/*
+* Lista de cumplaños para los que no se esta juntando
+*/
+exports.cumpleanierosParaLosQueNoJuntan = function(req,res){
+
+	var nuevosCumpleanios =  obtenerCumpleanios();
+
+	var cumpleaniosParaLosQueNoSeJuntaActualmente = [];
+
+	for(var x in nuevosCumpleanios){
+		if(nuevosCumpleanios[x].collecting === false){
+			cumpleaniosParaLosQueNoSeJuntaActualmente.push(nuevosCumpleanios[x]);
+		}
+	}
+
+	res.jsonp(cumpleaniosParaLosQueNoSeJuntaActualmente);
+
+};
+
+exports.postularseParaJuntar = function(req,res,id){
+
+	var nuevosCumpleanios =  obtenerCumpleanios();
+
+	for(var x in nuevosCumpleanios){
+		if(nuevosCumpleanios[x].id === id){
+			nuevosCumpleanios[x].collecting = true;
+		}
+	}
+	cumpleaniosParaLosQueNoSeJuntaActualmente.splice();
+
+}
