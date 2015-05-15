@@ -190,6 +190,7 @@ exports.cumpleanierosParaLosQueNoJuntan = function(req,res){
 exports.postularseParaJuntar = function(req,res,id){
 
 	var nuevosCumpleanios =  obtenerCumpleanios();
+	var cumpleaniosParaLosQueNoSeJuntaActualmente = [];
 
 	for(var x in nuevosCumpleanios){
 		if(nuevosCumpleanios[x].id === id){
@@ -197,5 +198,4 @@ exports.postularseParaJuntar = function(req,res,id){
 		}
 	}
 	cumpleaniosParaLosQueNoSeJuntaActualmente.splice();
-
-}
+};
