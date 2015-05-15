@@ -13,43 +13,31 @@ var listaCumpleanios;
 
 function obtenerCumpleanios(){
 
-	//obtencion de LDAP
-
-	//cumpleaños harcodeados
-	listaCumpleanios = [{'id':1,'firstname':'Eduardo','lastname':'Malvino','name':'emalvino','birthday':'1981-02-17T12: 00: 00','collecting':false},
-			{'id':2,'firstname':'Jesica','lastname':'Taira','name':'jtaira','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':3,'firstname':'Juan','lastname':'Jaime','name':'jjaime','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':4,'firstname':'Juan','lastname':'Jaime','name':'jjaime','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':5,'firstname':'Nahuel','lastname':'Schlegel','name':'nschlegel','birthday':'1981-02-17T12: 00: 00','collecting':false},
-			{'id':6,'firstname':'Matias','lastname':'Rios','name':'matrios','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':7,'firstname':'Oscar','lastname':'Pinto','name':'opinto','birthday':'1981-02-17T12: 00: 00','collecting':false},
-			{'id':8,'firstname':'Victor','lastname':'Di Lena','name':'vdilena','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':9,'firstname':'Raul','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':10,'firstname':'Pedro','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':11,'firstname':'Miguel','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':12,'firstname':'Anabella','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':13,'firstname':'Cintia','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':14,'firstname':'Daiana','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':15,'firstname':'Claudia','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':16,'firstname':'Marina','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':17,'firstname':'Franco','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':18,'firstname':'Jorge','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':19,'firstname':'Pablo','lastname':'Morixe','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':20,'firstname':'Carolina','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':21,'firstname':'Jose','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':22,'firstname':'Adriana','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':23,'firstname':'Mauro','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':24,'firstname':'Ramiro','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':25,'firstname':'Daniel','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':26,'firstname':'Ezequiel','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':27,'firstname':'Natalia','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':28,'firstname':'Leonardo','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':29,'firstname':'Agustin','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':30,'firstname':'Melchor','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':31,'firstname':'Gaspar','lastname':'Perez','name':'pmorixe','birthday':'1981-02-17T12: 00: 00','collecting':true},
-			{'id':32,'firstname':'Baltazar','lastname':'Wieja','name':'mwieja','birthday':'1981-02-17T12: 00: 00','collecting':true}];
+	//cumpleaños mockeados
+	listaCumpleanios = [{'id':1,'firstname':'Eduardo','lastname':'Malvino','name':'emalvino','birthday':new Date(new Date('1981/02/25')),'collecting':false},
+			{'id':2,'firstname':'Jesica','lastname':'Taira','name':'jtaira','birthday':new Date('1981/03/21'),'collecting':true},
+			{'id':3,'firstname':'Juan','lastname':'Jaime','name':'jjaime','birthday':new Date('1981/05/16'),'collecting':true},
+			{'id':4,'firstname':'Juan','lastname':'Jaime','name':'jjaime','birthday':new Date('1981/01/07'),'collecting':true},
+			{'id':5,'firstname':'Nahuel','lastname':'Schlegel','name':'nschlegel','birthday':new Date('1981/08/09'),'collecting':false},
+			{'id':6,'firstname':'Matias','lastname':'Rios','name':'matrios','birthday':new Date('1981/09/10'),'collecting':true},
+			{'id':7,'firstname':'Oscar','lastname':'Pinto','name':'opinto','birthday':new Date('1981/10/01'),'collecting':false},
+			{'id':8,'firstname':'Victor','lastname':'Di Lena','name':'vdilena','birthday':new Date('1981/02/25'),'collecting':true},
+			{'id':9,'firstname':'Raul','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/06/15'),'collecting':true},
+			{'id':10,'firstname':'Pedro','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/12/05'),'collecting':true},
+			{'id':11,'firstname':'Miguel','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/11/28'),'collecting':true},
+			{'id':12,'firstname':'Anabella','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/02/04'),'collecting':true},
+			{'id':13,'firstname':'Cintia','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/01/03'),'collecting':true},
+			{'id':14,'firstname':'Daiana','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/01/27'),'collecting':true},
+			{'id':15,'firstname':'Claudia','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/05/25'),'collecting':true},
+			{'id':16,'firstname':'Marina','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/05/24'),'collecting':true},
+			{'id':17,'firstname':'Franco','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/09/11'),'collecting':true},
+			{'id':18,'firstname':'Jorge','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/07/08'),'collecting':true},
+			{'id':19,'firstname':'Pablo','lastname':'Morixe','name':'pmorixe','birthday':new Date('1981/03/12'),'collecting':true},
+			{'id':20,'firstname':'Carolina','lastname':'Perez','name':'pmorixe','birthday':new Date('1981/09/19'),'collecting':true}];
 
 	return listaCumpleanios;
+
+
 }
 
 
@@ -118,28 +106,34 @@ exports.delete = function(req, res) {
  * List of Cumpleanios
  */
 exports.list = function(req, res) { 
+
+	//Vacion la lista de cumpleaños
+	//Cumpleanio.remove().exec();
+
+
 	Cumpleanio.find().where('name').ne(req.user.username).sort('-birthday').populate('user', 'displayName').exec(function(err, cumpleanios) {
+
+		if(cumpleanios.length === 0){
+
+			//cargo la lista de cumpleaños
+			var nuevaListaCumpleanios = obtenerCumpleanios();
+
+			for(var x in nuevaListaCumpleanios){
+
+				var cumpleanio = new Cumpleanio(nuevaListaCumpleanios[x]);
+				cumpleanio.user = req.user;
+
+				cumpleanio.save();
+				cumpleanios.push(cumpleanio);
+			}
+		}
+
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-
-			var nuevosCumpleanios =  obtenerCumpleanios();
-			var cumpleaniosSinUsuarioLogueado = [];
-
-			for(var x in nuevosCumpleanios){
-				if(nuevosCumpleanios[x].name !== req.user.username){
-					cumpleaniosSinUsuarioLogueado.push(nuevosCumpleanios[x]);
-				}
-			}
-
-			var cumpleaniosFiltrados = cumpleaniosSinUsuarioLogueado.slice(0,10);
-
-			// Filtro por usuario logueado
-
-			//lista de cumpleaños filtrada
-			res.jsonp(cumpleaniosFiltrados);
+			res.jsonp(cumpleanios);
 		}
 	});
 };
@@ -149,7 +143,7 @@ exports.list = function(req, res) {
  */
 exports.cumpleanioByID = function(req, res, next, id) { 
 
-	Cumpleanio.findById(id).populate('user', 'displayName').exec(function(err, cumpleanio) {
+	Cumpleanio.findOne().where('id').equals(id).exec(function(err, cumpleanio) {
 		if (err) return next(err);
 		if (! cumpleanio) return next(new Error('Failed to load Cumpleanio ' + id));
 		req.cumpleanio = cumpleanio ;
@@ -173,29 +167,29 @@ exports.hasAuthorization = function(req, res, next) {
 */
 exports.cumpleanierosParaLosQueNoJuntan = function(req,res){
 
-	var nuevosCumpleanios =  obtenerCumpleanios();
+	Cumpleanio.find({ $and: [{collecting: {$eq:false}},{name: {$ne:req.user.username}}]}).sort('-birthday').exec(function(err, cumpleanios) {
 
-	var cumpleaniosParaLosQueNoSeJuntaActualmente = [];
-
-	for(var x in nuevosCumpleanios){
-		if(nuevosCumpleanios[x].collecting === false){
-			cumpleaniosParaLosQueNoSeJuntaActualmente.push(nuevosCumpleanios[x]);
-		}
-	}
-
-	res.jsonp(cumpleaniosParaLosQueNoSeJuntaActualmente);
+		res.jsonp(cumpleanios);
+		
+	});
 
 };
 
-exports.postularseParaJuntar = function(req,res,id){
+exports.postularseParaJuntar = function(req,res){
 
-	var nuevosCumpleanios =  obtenerCumpleanios();
-	var cumpleaniosParaLosQueNoSeJuntaActualmente = [];
+	var cumpleanio = req.cumpleanio ;
 
-	for(var x in nuevosCumpleanios){
-		if(nuevosCumpleanios[x].id === id){
-			nuevosCumpleanios[x].collecting = true;
+	cumpleanio = _.extend(cumpleanio , req.body);
+	cumpleanio.collecting = true;
+
+	cumpleanio.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(cumpleanio);
 		}
-	}
-	cumpleaniosParaLosQueNoSeJuntaActualmente.splice();
+	});
+
 };

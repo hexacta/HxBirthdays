@@ -34,7 +34,11 @@ var CumpleanioSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	user: {
+	collecting_date_limit: {
+		type: Date,
+		default: Date.now
+	},
+	user: {// Referencia al usuario
 		type: Schema.ObjectId,
 		ref: 'User'
 	}

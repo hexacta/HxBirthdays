@@ -16,6 +16,11 @@ angular.module('cumpleanios').factory('Cumpleanios', ['$resource',
 .factory('CumpleaniosNoColectados', ['$resource',
 	function($resource) {
 
-		return $resource('cumpleanios-no-colectados/');
+		return $resource('cumpleanios-no-colectados/:cumpleanioId', { cumpleanioId: '@id'
+		}, {
+			chargeInBirthdayCollectedList: {
+				method: 'PUT'
+			}
+		});
 	}
 ]);

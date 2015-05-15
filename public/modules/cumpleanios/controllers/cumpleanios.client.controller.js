@@ -42,10 +42,12 @@ angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$s
 
 		// Update existing Cumpleanio
 		$scope.update = function() {
+
 			var cumpleanio = $scope.cumpleanio;
+			console.log('quiere hacer update de cumpleaños!!!: ' + cumpleanio.id);
 
 			cumpleanio.$update(function() {
-				$location.path('cumpleanios/' + cumpleanio._id);
+				$location.path('cumpleanios/');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -57,10 +59,10 @@ angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$s
 			$scope.cumpleanios = Cumpleanios.query();
 		};
 
-		// Find existing Cumpleanio
+		// Busca un cumpleaños para el que no se esta juntando
 		$scope.findOne = function() {
 
-			$scope.cumpleanio = Cumpleanios.get({ 
+			$scope.cumpleanio = CumpleaniosNoColectados.get({ 
 				cumpleanioId: $stateParams.cumpleanioId
 			});
 		};
@@ -69,6 +71,17 @@ angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$s
 
 			$scope.cumpleanios = CumpleaniosNoColectados.query();
 		
+		};
+
+		$scope.chargeInBirthdayCollectedList = function (){
+
+			console.log('chargeInBirthdayCollectedList()');
+			var cumpleanio = $scope.cumpleanio;
+			cumpleanio.$chargeInBirthdayCollectedList(function() {
+				//$location.path('cumpleanios/');
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 		};
 	}
 ]);

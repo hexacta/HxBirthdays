@@ -1,18 +1,26 @@
 <section data-ng-controller="CumpleaniosController" data-ng-init="findOne()">
     <div class="page-header">
-        <h1>Edit Cumpleanio</h1>
+        <h1>Juntar para el cumpleaños de </h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+        <form class="form-horizontal" data-ng-submit="chargeInBirthdayCollectedList()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                    <label class="control-label" for="name">Nombre</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="cumpleanio.name" id="name" class="form-control" placeholder="Name" required>
+                        {{cumpleanio.firstname}} {{cumpleanio.lastname}}
+                    </div>
+                    <label class="control-label" for="name">Foto</label>
+                    <div class="controls">
+                        <img src="http://fotos.hexacta.com:8181/photo.php?username={{cumpleanio.name}}"></img>
+                    </div>
+                    <label class="control-label" for="name">Cumple Años el dia</label>
+                    <div class="controls">
+                        {{cumpleanio.birthday | date : 'dd/MM/yyyy'}}
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
+                    <input type="submit" value="Juntar para su cumpleaños" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>

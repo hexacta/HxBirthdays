@@ -14,14 +14,16 @@ module.exports = function(app) {
 		.put(users.requiresLogin, cumpleanios.hasAuthorization, cumpleanios.update)
 		.delete(users.requiresLogin, cumpleanios.hasAuthorization, cumpleanios.delete);
 
-	// Finish by binding the Cumpleanio middleware
-	app.param('cumpleanioId', cumpleanios.cumpleanioByID);
 
 	app.route('/cumpleanios-no-colectados')
 		.get(cumpleanios.cumpleanierosParaLosQueNoJuntan)
 		.post(users.requiresLogin, cumpleanios.create);
 
 	app.route('/cumpleanios-no-colectados/:cumpleanioId')
-		.get(cumpleanios.postularseParaJuntar)
-		.post(users.requiresLogin, cumpleanios.create);
+		.get(cumpleanios.read)
+		.put(cumpleanios.postularseParaJuntar)
+		.delete(users.requiresLogin, cumpleanios.hasAuthorization, cumpleanios.delete);
+
+	// Finish by binding the Cumpleanio middleware
+	app.param('cumpleanioId', cumpleanios.cumpleanioByID);
 };
