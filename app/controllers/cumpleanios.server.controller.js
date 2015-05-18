@@ -17,11 +17,12 @@ var client = ldap.createClient({
   url: 'ldap://10.30.0.7:389/OU=Hexacta,DC=hexacta,DC=com'
 });
 
-client.bind('mi_usuario@hexacta.com', 'miclave', function(err) {
+client.bind('mi_usuario@hexacta.com', 'mi_contrasenia', function(err) {
   console.log('pasooooooooo: ' +err);
 });
 
-/*client.search('OU=Buenos Aires', function(err, res) {
+// Se usa distinguishedName para entrar
+client.search('OU=Buenos Aires,OU=Hexacta,DC=hexacta,DC=com', function(err, res) {
   console.log('entro al search!!!');
 
   res.on('searchEntry', function(entry) {
@@ -36,7 +37,7 @@ client.bind('mi_usuario@hexacta.com', 'miclave', function(err) {
   res.on('end', function(result) {
     console.log('status: ' + result.status);
   });
-});*/
+});
 
 var listaCumpleanios;
 
