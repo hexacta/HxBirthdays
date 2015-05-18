@@ -9,5 +9,6 @@ module.exports = function(app) {
 		.get(birthdayFund.list);
 
 	app.route('/birthdayFunds/:birthdayFundId')
-		.put(users.requiresLogin, birthdayFund.hasAuthorization, birthdayFund.update);
+		.put(birthdayFund.update);
+		//.put(users.requiresLogin, birthdayFund.hasAuthorization, birthdayFund.update);
 };

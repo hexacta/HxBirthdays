@@ -109,9 +109,9 @@ exports.list = function(req, res) {
 
 	//Vacion la lista de cumpleaños
 	//Cumpleanio.remove().exec();
+	// Cumpleanio.find().where('name').ne(req.user.username).sort('-birthday').populate('user', 'displayName').exec(function(err, cumpleanios) {
 
-
-	Cumpleanio.find().where('name').ne(req.user.username).sort('-birthday').populate('user', 'displayName').exec(function(err, cumpleanios) {
+	Cumpleanio.find().sort('-birthday').populate('user', 'displayName').exec(function(err, cumpleanios) {
 
 		if(cumpleanios.length === 0){
 

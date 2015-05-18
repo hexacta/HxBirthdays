@@ -23,8 +23,8 @@ var BirthdayFundSchema = new Schema({
 		default: ''
 	},
 	username: {
-		type: Schema.ObjectId,
-		ref: 'User'
+		type: String,
+		default: ''
 	},
 	photo: {
 		type: String

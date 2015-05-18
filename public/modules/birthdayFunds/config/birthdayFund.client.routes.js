@@ -7,14 +7,7 @@ angular.module('birthdayFunds').config(['$stateProvider',
 		$stateProvider.
 		state('listBirthdayFund', {
 			url: '/birthdayFunds',
-			templateUrl: 'modules/birthdayFund/views/list-birthdayFund.client.view.html'
+			templateUrl: 'modules/birthdayFunds/views/list-birthdayFund.client.view.html'
 		});
-
-		$stateProvider.
-		state('updateBirthdayFund', {
-			url: '/birthdayFunds/update',
-			templateUrl: 'modules/birthdayFund/views/list-birthdayFund.client.view.html'
-		});
-
 	}
 ]);
