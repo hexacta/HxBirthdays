@@ -14,15 +14,15 @@ var ldap = require('ldapjs');
 ldap.Attribute.settings.guid_format = ldap.GUID_FORMAT_B;
 
 var client = ldap.createClient({
-  url: 'ldap://10.30.0.7:389/OU=Hexacta,DC=hexacta,DC=com'
+  url: 'url_ldap'
 });
 
-client.bind('mi_usuario@hexacta.com', 'mi_contrasenia', function(err) {
+client.bind('usuario', 'contrasenia', function(err) {
   console.log('pasooooooooo: ' +err);
 });
 
 // Se usa distinguishedName para entrar
-client.search('OU=Buenos Aires,OU=Hexacta,DC=hexacta,DC=com', function(err, res) {
+client.search('CN=nombre,OU=otro nombre,OU=test,DC=test,DC=test', function(err, res) {
   console.log('entro al search!!!');
 
   res.on('searchEntry', function(entry) {
