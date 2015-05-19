@@ -9,36 +9,6 @@ var mongoose = require('mongoose'),
 	Usuario = mongoose.model('User'),
 	_ = require('lodash');
 
-var ldap = require('ldapjs');
-
-ldap.Attribute.settings.guid_format = ldap.GUID_FORMAT_B;
-
-var client = ldap.createClient({
-  url: 'url_ldap'
-});
-
-client.bind('usuario', 'contrasenia', function(err) {
-  console.log('pasooooooooo: ' +err);
-});
-
-// Se usa distinguishedName para entrar
-client.search('CN=nombre,OU=otro nombre,OU=test,DC=test,DC=test', function(err, res) {
-  console.log('entro al search!!!');
-
-  res.on('searchEntry', function(entry) {
-    console.log('entry: ' + JSON.stringify(entry.object));
-  });
-  res.on('searchReference', function(referral) {
-    console.log('referral: ' + referral.uris.join());
-  });
-  res.on('error', function(err) {
-    console.error('error: ' + err.message);
-  });
-  res.on('end', function(result) {
-    console.log('status: ' + result.status);
-  });
-});
-
 var listaCumpleanios;
 
 function obtenerCumpleanios(){
