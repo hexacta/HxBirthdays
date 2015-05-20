@@ -39,7 +39,7 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('usuarios', {
 			url: '/usuarios',
-			templateUrl: 'modules/users/views/usuarios.client.view.html'
+			templateUrl: 'modules/users/views/users.client.view.html'
 		}).
 		state('reset', {
 			url: '/password/reset/:token',
