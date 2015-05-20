@@ -13,3 +13,7 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+.navbar-hx {
+	background-image: linear-gradient(to bottom, #125757 0%, #125757 100%);
+	background-repeat: repeat-x;
+}

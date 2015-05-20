@@ -24,16 +24,28 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 			}
 		};
 
-		// Find a list of Cumpleanios
+		// Find a list of BirthdayFund
 		$scope.find = function() {
 			$scope.birthdayFunds = BirthdayFunds.query();
 		};
 
-		// Find existing Cumpleanio
+		// Find existing BirthdayFund
 		$scope.findOne = function() {
 			$scope.birthdayFunds = BirthdayFunds.get({ 
 				birthdayFundId: $stateParams.birthdayFundId
 			});
 		};
 	}
-]);
+]).filter('filterState', function(){
+	return function(input, stateParam){
+		var res = [];
+
+		angular.forEach(input, function(elem){
+			if(elem.state === stateParam)
+				res.push(elem);
+
+		});
+
+		return res;
+	}
+});
