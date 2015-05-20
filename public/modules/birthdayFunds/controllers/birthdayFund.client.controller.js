@@ -24,12 +24,12 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 			}
 		};
 
-		// Find a list of Cumpleanios
+		// Find a list of BirthdayFund
 		$scope.find = function() {
 			$scope.birthdayFunds = BirthdayFunds.query();
 		};
 
-		// Find existing Cumpleanio
+		// Find existing BirthdayFund
 		$scope.findOne = function() {
 			$scope.birthdayFunds = BirthdayFunds.get({ 
 				birthdayFundId: $stateParams.birthdayFundId
@@ -41,4 +41,16 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 			$scope.birthdayFund = {username:'vdilena', firstname: 'Victor Di Lena', lastname: 'Di Lena', birthday: new Date('1981/01/16'), limit_date_fund: new Date('1981/01/16')};
 		};
 	}
-]);
+]).filter('filterState', function(){
+	return function(input, stateParam){
+		var res = [];
+
+		angular.forEach(input, function(elem){
+			if(elem.state === stateParam)
+				res.push(elem);
+
+		});
+
+		return res;
+	};
+});

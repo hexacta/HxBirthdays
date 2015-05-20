@@ -14,11 +14,11 @@ var listOfBirthdayFund;
 function getListOfBirthdayFund(){
 
 	//BithdayFund harcodeados
-	listOfBirthdayFund = [{'id':1,'firstname':'Eduardo','lastname':'Malvino','username':'emalvino', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=emalvino', 'birthday':new Date('01/11/1983'),'usersCollecting':[{'name':'Lolo'},{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'state':'Open'},
-						  {'id':2,'firstname':'Oscar','lastname':'Pinto','username':'opinto', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=opinto', 'birthday':new Date('01/05/1983'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'state':'Open'},
-						  {'id':3,'firstname':'Victor','lastname':'Di Lena','username':'vdilena', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=vdilena', 'birthday':new Date('08/15/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'state':'Open'},
-						  {'id':4,'firstname':'Jesica','lastname':'Taira','username':'jtaira', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jtaira', 'birthday':new Date('06/08/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'state':'Open'},
-						  {'id':5,'firstname':'Juan','lastname':'Jaime','username':'jjaime', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jjaime	', 'birthday':new Date('11/12/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'state':'Open'}];
+	listOfBirthdayFund = [{'id':1,'firstname':'Eduardo','lastname':'Malvino','username':'emalvino', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=emalvino', 'birthday':new Date('01/11/1983'),'usersCollecting':[{'name':'Lolo'},{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
+						  {'id':2,'firstname':'Oscar','lastname':'Pinto','username':'opinto', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=opinto', 'birthday':new Date('01/05/1983'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
+						  {'id':3,'firstname':'Victor','lastname':'Di Lena','username':'vdilena', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=vdilena', 'birthday':new Date('08/15/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
+						  {'id':4,'firstname':'Jesica','lastname':'Taira','username':'jtaira', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jtaira', 'birthday':new Date('06/08/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
+						  {'id':5,'firstname':'Juan','lastname':'Jaime','username':'jjaime', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jjaime	', 'birthday':new Date('11/12/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':new Date('06/20/2015'),'state':'Inactive'}];
 						
 	return listOfBirthdayFund;
 }
@@ -27,8 +27,6 @@ function getListOfBirthdayFund(){
  * Update a BirthdayFundFund
  */
 exports.update = function(req, res) {
-	console.log('En el controller server');
-
 	var birthdayFund = new BirthdayFund(req.body);
 
 	birthdayFund.save(function(err) {

@@ -45,9 +45,13 @@ var BirthdayFundSchema = new Schema({
 		type: Number,
 		default: 0
 	}, 
+	collectingDateLimit: {
+		type: Date,
+		default: Date.now
+	},
 	state: {
 		type: String,
-		enum: ['Open', 'Closed', 'Canceled ']
+		enum: ['Active', 'InActive', 'Closed']
 	}
 });
 

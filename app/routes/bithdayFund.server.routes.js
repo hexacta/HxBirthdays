@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = function(app) {
-	var users = require('../../app/controllers/users.server.controller');
 	var birthdayFund = require('../../app/controllers/birthdayFund.server.controller');
 
 	// birthdayFund Routes
@@ -10,5 +9,4 @@ module.exports = function(app) {
 
 	app.route('/birthdayFunds/:birthdayFundId')
 		.put(birthdayFund.update);
-		//.put(users.requiresLogin, birthdayFund.hasAuthorization, birthdayFund.update);
 };
