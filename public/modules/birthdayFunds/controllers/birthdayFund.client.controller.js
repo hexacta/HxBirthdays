@@ -35,6 +35,11 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 				birthdayFundId: $stateParams.birthdayFundId
 			});
 		};
+
+		$scope.beginFund = function() {
+
+			$scope.birthdayFund = {username:'vdilena', firstname: 'Victor Di Lena', lastname: 'Di Lena', birthday: new Date('1981/01/16'), limit_date_fund: new Date('1981/01/16')};
+		};
 	}
 ]).filter('filterState', function(){
 	return function(input, stateParam){

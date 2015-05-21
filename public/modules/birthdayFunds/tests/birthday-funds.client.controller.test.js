@@ -1,10 +1,10 @@
 'use strict';
 
 (function() {
-	// Usuarios Controller Spec
-	describe('Usuarios Controller Tests', function() {
+	// Birthday funds Controller Spec
+	describe('Birthday funds Controller Tests', function() {
 		// Initialize global variables
-		var UsuariosController,
+		var BirthdayFundsController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -44,8 +44,8 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Usuarios controller.
-			UsuariosController = $controller('UsuariosController', {
+			// Initialize the Birthday funds controller.
+			BirthdayFundsController = $controller('BirthdayFundsController', {
 				$scope: scope
 			});
 		}));

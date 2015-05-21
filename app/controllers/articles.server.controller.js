@@ -37,6 +37,8 @@ exports.read = function(req, res) {
  * Update a article
  */
 exports.update = function(req, res) {
+
+
 	var article = req.article;
 
 	article = _.extend(article, req.body);
