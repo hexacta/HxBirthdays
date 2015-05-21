@@ -76,3 +76,8 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+exports.beginFund = function(req, res, next) {
+
+	
+}
