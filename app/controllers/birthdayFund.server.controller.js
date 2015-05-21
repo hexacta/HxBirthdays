@@ -79,5 +79,5 @@ exports.hasAuthorization = function(req, res, next) {
 
 exports.beginFund = function(req, res, next) {
 
-	
-}
+
+};
