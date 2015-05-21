@@ -47,5 +47,5 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 		});
 
 		return res;
-	}
+	};
 });
