@@ -46,8 +46,7 @@ var BirthdayFundSchema = new Schema({
 		default: 0
 	}, 
 	collectingDateLimit: {
-		type: Date,
-		default: Date.now
+		type: String
 	},
 	state: {
 		type: String,
