@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('users').controller('usersController', ['$scope', 'usuarios',
-	function($scope, usuarios) {
+angular.module('users').controller('usersController', ['$scope', 'users',
+	function($scope, users) {
   		$scope.find = function() {
-			$scope.usuarios = usuarios.query();
+			$scope.users = users.query();
 		};
 	}
 ]);
