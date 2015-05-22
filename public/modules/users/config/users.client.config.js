@@ -4,7 +4,7 @@
 angular.module('users').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'users', 'Lista de users', 'users');
+		Menus.addMenuItem('topbar', 'Usuarios', 'users', ' ', 'users');
 	}
 ]);
 
@@ -28,7 +28,6 @@ angular.module('users').config(['$httpProvider',
 								// Add unauthorized behaviour 
 								break;
 						}
-
 						return $q.reject(rejection);
 					}
 				};

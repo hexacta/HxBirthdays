@@ -88,6 +88,9 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
+	},
+	usersFriends: {
+		type: [{username: {type: String}}]
 	}
 });
 

@@ -1,5 +1,15 @@
 <section class="row" data-ng-controller="SettingsController">
-	<h3 class="col-md-12 text-center">Edit your profile</h3>
+	<h2 class="col-md-12 text-left">Seleccionar amigos</h2>
+	<div class="filter-group">
+    	<div class="col-md-12 text-right">
+	      <input type="text" class="form-control" ng-model="username" placeholder="Amigos"/>
+	    </div>
+	  </div>
+	</div>
+
+
+
+
 	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
 		<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
 			<fieldset>
@@ -20,7 +30,7 @@
 					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
 				</div>
 				<div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
+					<button type="submit" class="btn btn-large btn-primary">Guardar</button>
 				</div>
 				<div data-ng-show="success" class="text-center text-success">
 					<strong>Profile Saved Successfully</strong>
