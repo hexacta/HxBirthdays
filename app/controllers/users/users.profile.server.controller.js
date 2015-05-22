@@ -45,14 +45,13 @@ var j = schedule.scheduleJob('0 0 * * *', function(){
  * Lista de Usuarios
  */
 exports.list = function(req, res) {
-	console.log('En el list');
-	User.find().sort('-username').populate('username', 'displayName').exec(function(err, users) {
+	User.find().sort('-username').exec(function(err, users) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(listaUsuarios);
+			res.json(users);
 		}
 	});
 };
