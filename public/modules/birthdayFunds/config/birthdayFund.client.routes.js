@@ -9,7 +9,7 @@ angular.module('birthdayFunds').config(['$stateProvider',
 			url: '/birthdayFunds',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		}).state('createbirthdayFund', {
-			url: '/create_birthdayFunds',
+			url: '/createBirthdayFunds/:birthdayFundId/create',
 			templateUrl: 'modules/birthdayFunds/views/create-birthdayFund.client.view.html'
 		});
 	}

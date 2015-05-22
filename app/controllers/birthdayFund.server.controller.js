@@ -27,7 +27,10 @@ function getListOfBirthdayFund(){
  * Update a BirthdayFundFund
  */
 exports.update = function(req, res) {
-	var birthdayFund = new BirthdayFund(req.body);
+
+	console.log('update(): ' + JSON.stringify(req.body));
+
+	var birthdayFund = new BirthdayFund();
 
 	birthdayFund.save(function(err) {
 		if (err) {
@@ -77,7 +80,10 @@ exports.hasAuthorization = function(req, res, next) {
 	next();
 };
 
-exports.beginFund = function(req, res, next) {
+exports.beginFund = function(req, res, next, id) {
+	next();
+};
 
-
+exports.read = function(req, res) {
+	res.jsonp(new BirthdayFund({id: 1, username:'vdilena', firstname: 'Victor', lastname: 'Di Lena', birthday: new Date('1981/01/16'), usersCollecting: []}));
 };

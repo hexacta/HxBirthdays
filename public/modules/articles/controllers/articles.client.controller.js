@@ -36,6 +36,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		};
 
 		$scope.update = function() {
+
+			console.log('read update()');
 			var article = $scope.article;
 
 			article.$update(function() {

@@ -1,8 +1,8 @@
 'use strict';
 
 // Birthday Fund controller 
-angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', '$stateParams', '$location', 'Authentication', 'BirthdayFunds',
-	function($scope, $stateParams, $location, Authentication, BirthdayFunds) {
+angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', '$stateParams', '$location', 'Authentication', 'BirthdayFunds', 'BirthdayFundBegin', 
+	function($scope, $stateParams, $location, Authentication, BirthdayFunds, BirthdayFundBegin) {
 		$scope.authentication = Authentication;
 
 		// Update existing BirthdayFund
@@ -38,8 +38,26 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 
 		$scope.beginFund = function() {
 
-			$scope.birthdayFund = {username:'vdilena', firstname: 'Victor Di Lena', lastname: 'Di Lena', birthday: new Date('1981/01/16'), limit_date_fund: new Date('1981/01/16')};
+			$scope.birthdayFund = BirthdayFundBegin.get({ 
+				birthdayFundId: $stateParams.birthdayFundId
+			});
+			
 		};
+
+		$scope.upgradeBirthday = function(){
+
+			var birthdayFund = $scope.birthdayFund;
+
+			birthdayFund.state = 'Active';
+			birthdayFund.usersCollecting.push({'name': $scope.authentication.user.username});
+
+			birthdayFund.$update(function() {
+				$location.path('/home');
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
 	}
 ]).filter('filterState', function(){
 	return function(input, stateParam){

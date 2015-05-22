@@ -11,4 +11,14 @@ angular.module('birthdayFunds').factory('BirthdayFunds', ['$resource',
 			}
 		});
 	}
+]).factory('BirthdayFundBegin', ['$resource',
+	function($resource) {
+
+		return $resource('createBirthdayFunds/:birthdayFundId', { birthdayFundId: '@id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
 ]);

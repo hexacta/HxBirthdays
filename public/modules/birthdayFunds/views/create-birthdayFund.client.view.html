@@ -3,29 +3,27 @@
 		<h1>Comenzar a Juntar</h1>
 	</div>
 	<div class="col-md-12">
-		<form name="birthdayFundForm" class="form-horizontal" data-ng-submit="update(birthdayFundsForm.$valid)" novalidate>
+		<form name="birthdayFundForm" class="form-horizontal" data-ng-submit="upgradeBirthday()" novalidate>
 			<fieldset>
 				<div class="form-group">
 					<label class="control-label">Se Junta para</label>
 					<div class="controls">
-						<div data-ng-bind="birthdayFund.firstname"></div>
+						<div data-ng-bind="birthdayFund.firstname + ' ' + birthdayFund.lastname"></div>
 						<div><img src="http://fotos.hexacta.com:8181/photo.php?username={{birthdayFund.username}}" class="img-circle text-left"></img></div>
 					</div>
 					<label class="control-label">Que cumple el día</label>
 					<div data-ng-bind="birthdayFund.birthday | date: 'dd/MM' "></div>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="title">Fecha limite para juntar</label>
+					<label class="control-label" for="limit_date_fund">Fecha limite para juntar</label>
 					<div class="controls">
-						<input type="date" ng-model="birthdayFund.limit_date_fund" placeholder="dd/MM/yyyy" required />
+						<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" placeholder="dd/MM/yyyy" required />
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Comenzar a juntar!" class="btn btn-default">
+					<input type="submit" value="Comenzar a juntar!" class="btn btn-default" ng-disabled="birthdayFundForm.limit_date_fund.$dirty  && birthdayFundForm.limit_date_fund.$invalid">
 				</div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+				<div class="error" ng-show="birthdayFundForm.limit_date_fund.$error.required">La fecha límite es requerida!</div>
 			</fieldset>
 		</form>
 	</div>
