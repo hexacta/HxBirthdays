@@ -54,20 +54,39 @@ var UserSchema = new Schema({
 		required: 'Please fill in a username',
 		trim: true
 	},
-	photo: {
-		type: String
-	},
-	birthday: {
-		type: Date,
-		default: Date.now
-	},
-	salt: {
-		type: String
-	},
 	password: {
 		type: String,
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
+	},
+	salt: {
+		type: String
+	},
+	provider: {
+		type: String
+	},
+	providerData: {},
+	additionalProvidersData: {},
+	roles: {
+		type: [{
+			type: String,
+			enum: ['user', 'admin']
+		}],
+		default: ['user']
+	},
+	updated: {
+		type: Date
+	},
+	created: {
+		type: Date,
+		default: Date.now
+	},
+	/* For reset password */
+	resetPasswordToken: {
+		type: String
+	},
+	resetPasswordExpires: {
+		type: Date
 	},
 	usersFriends: {
 		type: [{username: {type: String}}]
