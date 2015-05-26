@@ -16,16 +16,29 @@ var _ = require('lodash'),
  */
 exports.signin = function(req, res, next) {
 
+	//User.remove().exec();
+
 	var client = ldap.createClient({
 		      url: 'el_ldap'
 	});
 
 	client.bind(String(req.body.username) + '@hexacta.com', String(req.body.password), function(err) {
+		console.log('bind exitoso');
+
+		
+
 		if(!err){
-		  	passport.authenticate('local', function(err, user, info) {
+		console.log('No error');
+		var	user = new User();
+		user.firstName = 'Oscar';
+		user.lastName = 'Pinto';
+		user.username = req.body.username;
+		user.password = req.body.password;
+		/*passport.authenticate('local', function(err, user, info) {
 				if (err || !user) {
 					res.status(400).send(info);
 				} else {
+					console.log('entro en el signin para el login')
 					// Remove sensitive data before login
 					user.password = undefined;
 					user.salt = undefined;
@@ -37,7 +50,14 @@ exports.signin = function(req, res, next) {
 						}	
 					});
 				}
-			})(req, res, next);
+			})(req, res, next);*/
+			req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.json(user);
+						}	
+			});
 		}
 		else {
 			console.log('Usuario o clave incorrecta');
