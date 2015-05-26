@@ -11,10 +11,12 @@ var _ = require('lodash'),
 
 var listaUsuarios = [];
 
-//Scheduler
-var schedule = require('node-schedule');
 
-var j = schedule.scheduleJob('0 0 * * *', function(){ 
+
+//Scheduler
+//var schedule = require('node-schedule');
+
+//var j = schedule.scheduleJob('0 0 * * *', function(){ 
 	//Ldap
 	var ldap = require('ldapjs');
 
@@ -24,7 +26,8 @@ var j = schedule.scheduleJob('0 0 * * *', function(){
 	  url: 'el_ldap'
 	});
 
-	client.bind('miusuario', 'micontrasenia', function(err) {
+	
+	client.bind('miusuario', 'miconstrasenia', function(err) {
 	  	console.log('Conectado a LDAP!');
 	});
 
@@ -37,9 +40,14 @@ var j = schedule.scheduleJob('0 0 * * *', function(){
 		var lista = res.on('searchEntry', function(entry) {
 	 		listaUsuarios.push({nombre: entry.object.givenName, apellido: entry.object.sn, email: entry.object.mail, username: entry.object.name, password: null, fechaDeNacimiento: '8/6/1984'});
 		});
-
+	
 	});
-});
+
+
+
+
+	
+//});
 
 /**
  * Lista de Usuarios
