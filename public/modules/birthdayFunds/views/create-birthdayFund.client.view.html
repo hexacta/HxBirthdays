@@ -17,11 +17,11 @@
 				<div class="form-group">
 					<label class="control-label" for="limit_date_fund">Fecha limite para juntar</label>
 					<div class="controls">
-						<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" placeholder="dd/MM/yyyy" required />
+						<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" required />
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Comenzar a juntar!" class="btn btn-default" ng-disabled="birthdayFundForm.limit_date_fund.$dirty  && birthdayFundForm.limit_date_fund.$invalid">
+					<input type="submit" value="Comenzar a juntar!" class="btn btn-default" ng-disabled="birthdayFundForm.limit_date_fund.$dirty  && birthdayFundForm.limit_date_fund.$invalid" />
 				</div>
 				<div class="error" ng-show="birthdayFundForm.limit_date_fund.$error.required">La fecha límite es requerida!</div>
 			</fieldset>

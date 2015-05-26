@@ -4,12 +4,10 @@
 	</div>
 	<div class="list-group">
 		<a data-ng-repeat="usuario in users" data-ng-href="#!/users/{{usuario._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Username
-				<span data-ng-bind="usuario.username"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="usuario.nombre"></h4>
-			<p class="list-group-item-text" data-ng-bind="usuario.apellido"></p>
+				Username -> <span data-ng-bind="usuario.username"></span><br>
+				Display Name -> <p data-ng-bind="usuario.firstname + ' ' +usuario.lastname"></p><br>
+	            Cumple años el <strong data-ng-bind="usuario.birthday | date:'dd/MM/yyyy'"></strong>                  
+	            <img alt="Photo" class="img-circle text-left" ng-src="{{usuario.photo}}" />
 		</a>
 	</div>
 	<div class="alert alert-warning text-center" data-ng-if="users.$resolved && !users.length">

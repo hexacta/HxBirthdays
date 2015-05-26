@@ -14,13 +14,23 @@ var listOfBirthdayFund;
 function getListOfBirthdayFund(){
 
 	//BithdayFund harcodeados
-	listOfBirthdayFund = [{'id':1,'firstname':'Eduardo','lastname':'Malvino','username':'emalvino', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=emalvino', 'birthday':new Date('01/11/1983'),'usersCollecting':[{'name':'Lolo'},{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
-						  {'id':2,'firstname':'Oscar','lastname':'Pinto','username':'opinto', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=opinto', 'birthday':new Date('01/05/1983'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
-						  {'id':3,'firstname':'Victor','lastname':'Di Lena','username':'vdilena', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=vdilena', 'birthday':new Date('08/15/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
-						  {'id':4,'firstname':'Jesica','lastname':'Taira','username':'jtaira', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jtaira', 'birthday':new Date('06/08/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':new Date('06/20/2015'),'state':'Active'},
-						  {'id':5,'firstname':'Juan','lastname':'Jaime','username':'jjaime', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jjaime	', 'birthday':new Date('11/12/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':new Date('06/20/2015'),'state':'Inactive'}];
+	listOfBirthdayFund = [{'id':0,'firstname':'Eduardo','lastname':'Malvino','username':'emalvino', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=emalvino', 'birthday':new Date('01/11/1983'),'usersCollecting':[{'name':'Lolo'},{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':'2015-11-25','state':'Active'},
+						  {'id':1,'firstname':'Oscar','lastname':'Pinto','username':'opinto', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=opinto', 'birthday':new Date('01/05/1983'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':'2015-11-25','state':'Active'},
+						  {'id':2,'firstname':'Victor','lastname':'Di Lena','username':'vdilena', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=vdilena', 'birthday':new Date('08/15/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':'2015-11-25','state':'Active'},
+						  {'id':3,'firstname':'Jesica','lastname':'Taira','username':'jtaira', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jtaira', 'birthday':new Date('06/08/1984'),'usersCollecting':[{'name':'Juan'}, {'name': 'Pedro'}],'usersGivers':[{'name':'Juan'}, {'name': 'Pedro'}],'amount':40,'collectingDateLimit':'2015-11-25','state':'Active'},
+						  {'id':4,'firstname':'Juan','lastname':'Jaime','username':'jjaime', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=jjaime', 'birthday':new Date('11/12/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':'2015-11-25','state':'Inactive'},
+						  {'id':5,'firstname':'Nahuel','lastname':'Schlegel','username':'nschlegel', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=nschlegel', 'birthday':new Date('11/06/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':'2015-11-25','state':'Inactive'},
+						  {'id':6,'firstname':'Marcelo','lastname':'Wieja','username':'mwieja', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=mwieja', 'birthday':new Date('11/07/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':'2015-11-25','state':'Inactive'},
+						  {'id':7,'firstname':'Pablo','lastname':'Morixe','username':'pmorixe', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=pmorixe', 'birthday':new Date('11/08/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':'2015-11-25','state':'Inactive'},
+						  {'id':8,'firstname':'Tomas','lastname':'Franco','username':'tfranco', 'photo': 'http://fotos.hexacta.com:8181/photo.php?username=tfranco', 'birthday':new Date('11/09/1983'),'usersCollecting':[{'name':'Jesica'}, {'name': 'Victor'}],'usersGivers':[{'name':'Oscar'}],'amount':30,'collectingDateLimit':'2015-11-25','state':'Inactive'}];
 						
 	return listOfBirthdayFund;
+}
+
+//Borrar cuando se trabaje con datos reales
+function getBirthday(id){
+
+	return listOfBirthdayFund[id];
 }
 
 /**
@@ -81,9 +91,22 @@ exports.hasAuthorization = function(req, res, next) {
 };
 
 exports.beginFund = function(req, res, next, id) {
+
+	// Usar cuando se trabaje con datos reales
+	/*BirthdayFund.findOne().where('id').equals(id).exec(function(err, birthdayFund) {
+		console.log('getBirthday()');
+		if (err) return next(err);
+		if (! birthdayFund){
+
+			 next(new Error('Failed to load BirthdayFund ' + id));	
+		} 
+		req.birthdayFund = birthdayFund ;
+		next();
+	});*/
+	req.birthdayFund = getBirthday(id);
 	next();
 };
 
 exports.read = function(req, res) {
-	res.jsonp(new BirthdayFund({id: 1, username:'vdilena', firstname: 'Victor', lastname: 'Di Lena', birthday: new Date('1981/01/16'), usersCollecting: []}));
+	res.jsonp(req.birthdayFund);
 };
