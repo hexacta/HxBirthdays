@@ -8,8 +8,22 @@ var _ = require('lodash'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User'),
-	ldap = require('ldapjs');
+	ldap = require('ldapjs'),
+	fs = require('fs');
 
+var theLDAPUrl;
+var params = {};
+
+// Lectura de archivo
+var fileData = fs.readFileSync('LDAP/ldap_params.txt', 'utf8');
+var fileLines = fileData.split('\r\n');
+
+for (var x in fileLines){
+	var fileLine = fileLines[x].split('|');
+	params[fileLine[0]] = fileLine[1];
+}
+// Lectura de archivo
+theLDAPUrl = params.url;
 
 /**
  * Signin after passport authentication
@@ -17,29 +31,22 @@ var _ = require('lodash'),
 exports.signin = function(req, res, next) {
 
 	var client = ldap.createClient({
-		      url: 'el_ldap'
+		      url: theLDAPUrl
 	});
 
 	client.bind(String(req.body.username) + '@hexacta.com', String(req.body.password), function(err) {
-		if(!err){
-		  	passport.authenticate('local', function(err, user, info) {
-				if (err || !user) {
-					res.status(400).send(info);
+		if(!err){			
+			var	user = new User();
+			user.username = req.body.username;
+			user.password = req.body.password;
+			req.login(user, function(err) {
+				if (err) {
+					res.status(400).send(err);
 				} else {
-					// Remove sensitive data before login
-					user.password = undefined;
-					user.salt = undefined;
-					req.login(user, function(err) {
-						if (err) {
-							res.status(400).send(err);
-						} else {
-							res.json(user);
-						}	
-					});
-				}
-			})(req, res, next);
-		}
-		else {
+					res.json(user);
+				}	
+			});
+		} else {
 			console.log('Usuario o clave incorrecta');
 			res.status(400).send('Usuario o clave incorrecta');
 		}
