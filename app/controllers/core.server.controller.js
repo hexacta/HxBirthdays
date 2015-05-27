@@ -24,6 +24,9 @@ var dn;
 var params = {};
 
 // Lectura de archivo
+/*
+* TODO: Meter esto en un servicio.
+*/
 var fileData = fs.readFileSync('LDAP/ldap_params.txt', 'utf8');
 var fileLines = fileData.split('\r\n');
 
@@ -36,7 +39,7 @@ for (var x in fileLines){
 theLDAPUrl = params.url;
 user = params.user;
 pass = params.pass;
-dn = params.dn;
+dn = params.dn_bs + ',' + params.dn;
 
 //Scheduler create users 
 var schedule = require('node-schedule');
@@ -62,11 +65,12 @@ ldap.Attribute.settings.guid_format = ldap.GUID_FORMAT_B;
 	};
 
 	// Se usa distinguishedName para entrar
-	client.search(dn, opts, function(err, res) {  
+	client.search(dn, opts, function(err, res) {
 		var lista = res.on('searchEntry', function(entry) {
-			User.find().where('username').equals(entry.object.name).exec(function(err, users) {
+
+			User.findOne().where('username').equals(entry.object.name).exec(function(err, users) {
 				// Si no lo encuentro, lo agrego
-				if (err) {
+				if (!users) {
 					var newUser = new User();
 			 		newUser.firstName = entry.object.givenName;
 			 		newUser.lastName = entry.object.sn;
@@ -78,16 +82,7 @@ ldap.Attribute.settings.guid_format = ldap.GUID_FORMAT_B;
 			 		newUser.password = null;
 			 		newUser.usersFriends = [];
 
-			 		newUser.save(function(err) {
-						if (err) {
-							console.log(err);
-							return res.status(400).send({
-								message: errorHandler.getErrorMessage(err)
-							});
-						} else {
-							res.json(newUser);
-						}
-					});	
+			 		newUser.save();
 				}
 			});
 		});
