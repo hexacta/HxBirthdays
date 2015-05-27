@@ -22,15 +22,12 @@ for (var x in fileLines){
 	var fileLine = fileLines[x].split('|');
 	params[fileLine[0]] = fileLine[1];
 }
-// Lectura de archivo
 theLDAPUrl = params.url;
 
 /**
  * Signin after passport authentication
  */
 exports.signin = function(req, res, next) {
-
-	//User.remove().exec();
 
 	var client = ldap.createClient({
 		      url: theLDAPUrl
