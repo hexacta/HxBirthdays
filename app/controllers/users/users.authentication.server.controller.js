@@ -30,6 +30,8 @@ theLDAPUrl = params.url;
  */
 exports.signin = function(req, res, next) {
 
+	//User.remove().exec();
+
 	var client = ldap.createClient({
 		      url: theLDAPUrl
 	});
