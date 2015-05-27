@@ -5,17 +5,17 @@
 			<fieldset>
 				<div class="form-group">
 					<label for="username">Usuario</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+					<input required type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
 				</div>
 				<div class="form-group">
-					<label for="password">clave</label>
-					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+					<label for="password">Clave</label>
+					<input required type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
 				</div>
 				<div class="text-center form-group">
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<button type="submit" class="btn btn-primary">Sign In</button>
 				</div>
 				<div class="text-center forgot-password">
-					<a href="/#!/password/forgot">Olvidaste tu clave?</a>
+					<a href="/#!/password/forgot">Olvidaste tu Clave?</a>
 				</div>
 				<div data-ng-show="error" class="text-center text-danger">
 					<strong data-ng-bind="error"></strong>

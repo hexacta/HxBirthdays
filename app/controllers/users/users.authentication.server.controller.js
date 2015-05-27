@@ -47,8 +47,7 @@ exports.signin = function(req, res, next) {
 				}
 			});
 		} else {
-			console.log('Usuario o clave incorrecta');
-			res.status(400).send('Usuario o clave incorrecta');
+			res.status(400).send({message: 'Usuario o Clave Incorrecta'});
 		}
 	});
 };
