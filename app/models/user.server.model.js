@@ -74,9 +74,6 @@ var UserSchema = new Schema({
 		}],
 		default: ['user']
 	},
-	updated: {
-		type: Date
-	},
 	created: {
 		type: Date,
 		default: Date.now
