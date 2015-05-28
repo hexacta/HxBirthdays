@@ -11,6 +11,7 @@ module.exports = function(app) {
 
 	// Setting up the users profile api
 	app.route('/users').get(users.list);
+	app.route('/users').put(users.update);
 
 	// Setting up the users password api
 	app.route('/auth/forgot').post(users.forgot);
