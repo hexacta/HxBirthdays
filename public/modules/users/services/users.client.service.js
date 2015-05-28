@@ -1,11 +1,14 @@
 'use strict';
 
 //Users service used for communicating with the users REST endpoints
-angular.module('users').factory('users', ['$resource',
+angular.module('users').factory('Users', ['$resource',
 	function($resource) {
 		return $resource('users/:userId', {
-			userId: '@id'
-		}
-	);
-	}	
+			userId: '@id'	
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
 ]);
