@@ -2,22 +2,20 @@
    <div class="page-header">
 		<h1>Comenzar a Juntar</h1>
 	</div>
-	<div class="col-md-12">
+	<div class="col-md-8">
 		<form name="birthdayFundForm" class="form-horizontal" data-ng-submit="upgradeBirthday()" novalidate>
 			<fieldset>
 				<div class="form-group">
-					<label class="control-label">Se Junta para</label>
-					<div class="controls">
-						<div data-ng-bind="birthdayFund.firstname + ' ' + birthdayFund.lastname"></div>
-						<div><img src="http://fotos.hexacta.com:8181/photo.php?username={{birthdayFund.username}}" class="img-circle text-left"></img></div>
-					</div>
-					<label class="control-label">Que cumple el día</label>
-					<div data-ng-bind="birthdayFund.birthday | date: 'dd/MM' "></div>
-				</div>
-				<div class="form-group">
-					<label class="control-label" for="limit_date_fund">Fecha limite para juntar</label>
-					<div class="controls">
-						<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" required />
+					<div class="row">
+						<div class="col-md-6">          
+							Se Junta para <strong data-ng-bind="birthdayFund.firstname + ' ' + birthdayFund.lastname"></strong><br>
+							Que cumple el día <strong data-ng-bind="birthdayFund.birthday | date: 'dd/MM' "></strong><br>
+							<label class="control-label" for="limit_date_fund">Fecha limite para juntar</label><br>
+							<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" required />
+						</div>
+		                <div class="col-md-2" align="center">  	
+							<div><img src="http://fotos.hexacta.com:8181/photo.php?username={{birthdayFund.username}}" class="img-circle text-left"></img></div>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
