@@ -17,11 +17,25 @@
 				<div class="form-group">
 					<label class="control-label" for="limit_date_fund">Fecha limite para juntar</label>
 					<div class="controls">
-						<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" required />
+						 <input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Quienes pusieron?</label>
+					<div class="controls">
+						 <div>
+							 <label>Usuario 1</label>
+							 <select ng-model="firstSelected" ng-options="user.displayName for user in usersEnabledToCollect" ng-change='addFirstSelected(firstSelected.displayName)'></select>
+						</div>
+					 	 <div>
+						 	 <label>Agregaste a:</label>
+							 <div ng-bind="primerUsuarioAgregado"></div>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<input type="submit" value="Comenzar a juntar!" class="btn btn-default" ng-disabled="birthdayFundForm.limit_date_fund.$dirty  && birthdayFundForm.limit_date_fund.$invalid" />
+					<div id="apendear"></div>
 				</div>
 				<div class="error" ng-show="birthdayFundForm.limit_date_fund.$error.required">La fecha límite es requerida!</div>
 			</fieldset>
