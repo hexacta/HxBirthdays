@@ -26,9 +26,6 @@ var BirthdayFundSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	photo: {
-		type: String
-	},
 	birthday: {
 		type: Date,
 		default: Date.now

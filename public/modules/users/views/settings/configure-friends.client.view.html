@@ -2,21 +2,32 @@
 	<div class="page-header text-left">
 		<h2>Seleccionar amigos</h2>
 	</div>
-	<input type="text" class="form-control" ng-model="filtroAmigo" placeholder="Amigos"/>
-	<br>
- 	<div id="usersResults" class="table-striped">
-	    <div ng-repeat="user in users | filter: filtroAmigo" class="list-group-item">
-	    	<div class="row">       
-	        	<div class="col-md-2">              
-	            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="{{user.photo}}" />
-	            </div>
-	            <div class="col-md-4">
-	            	<h4 class="list-group-item-heading" data-ng-bind="user.firstName + ' ' +user.lastName"></h4>
-	            </div>
-	            <div class="col-md-4">
-	            	<input type="checkbox" ng-model="string" ng-click="addFriend(user.username)">
-	            </div>		
-	        </div>  
-	    </div>
-	</div> 	
+	<form name="configureForm" class="form-horizontal" data-ng-submit="upgradeUser()" novalidate>
+	<fieldset>
+    	<div class="row">       
+        	<div class="col-md-6">              
+				<input type="text" class="form-control" ng-model="filtroAmigo" placeholder="Amigos"/>
+			</div>
+			<div class="col-md-4">
+				<input type="submit" value="Listo!" class="btn btn-default" />
+			</div> 	
+		</div>	
+		<br>
+	 	<div id="usersResults" class="table-striped">
+		    <div ng-repeat="user in users | filter: filtroAmigo" class="list-group-item">
+		    	<div class="row">       
+		        	<div class="col-md-2">              
+		            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{user.username}}" />
+		            </div>
+		            <div class="col-md-2">
+		            	<h4 class="list-group-item-heading" data-ng-bind="user.firstName + ' ' +user.lastName"></h4>
+		            </div>
+		            <div class="col-md-2">
+		            	<input type="checkbox" ng-model="string" ng-click="addRemoveFriend(user.username)">
+		            </div>		
+		        </div>
+		    </div>
+		</div> 	
+	</fieldset>
+	<form>		
 </section>

@@ -24,22 +24,16 @@ exports.list = function(req, res) {
 };
 
 /**
- * Update user details
+ * Update user
  */
 exports.update = function(req, res) {
-	// Init Variables
 	var user = req.user;
 	var message = null;
-
-	// For security measurement we remove the roles from the req.body object
-	delete req.body.roles;
 
 	if (user) {
 		// Merge existing user
 		user = _.extend(user, req.body);
-		user.updated = Date.now();
-		user.displayName = user.firstName + ' ' + user.lastName;
-
+		
 		user.save(function(err) {
 			if (err) {
 				return res.status(400).send({
