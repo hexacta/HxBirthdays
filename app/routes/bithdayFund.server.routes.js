@@ -15,6 +15,11 @@ module.exports = function(app) {
 		.get(birthdayFund.read)
 		.put(birthdayFund.update);
 
+	app.route('/usersToCollect/:birthdayUser')
+		.get(birthdayFund.users);
+
 	app.param('birthdayFundId', birthdayFund.beginFund);
+	app.param('birthdayUser', birthdayFund.users);
+
 
 };

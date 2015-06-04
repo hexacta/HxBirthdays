@@ -86,7 +86,10 @@ var UserSchema = new Schema({
 		type: Date
 	},
 	usersFriends: {
-		type: [{username: {type: String}}]
+		type: [{
+			username: {type: String}, 
+			displayName: {type: String}	
+			}]
 	}
 });
 

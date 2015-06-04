@@ -1,8 +1,8 @@
 'use strict';
 
 // Birthday Fund controller 
-angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', '$stateParams', '$location', 'Authentication', 'BirthdayFunds', 'BirthdayFundBegin', 
-	function($scope, $stateParams, $location, Authentication, BirthdayFunds, BirthdayFundBegin) {
+angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', '$stateParams', '$location', 'Authentication', 'BirthdayFunds', 'BirthdayFundBegin', 'CollectableUsers', 
+	function($scope, $stateParams, $location, Authentication, BirthdayFunds, BirthdayFundBegin, CollectableUsers) {
 		$scope.authentication = Authentication;
 
 		// Update existing BirthdayFund
@@ -40,8 +40,16 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 
 			$scope.birthdayFund = BirthdayFundBegin.get({ 
 				birthdayFundId: $stateParams.birthdayFundId
+			},function (data){
+
+				console.log('nombre cum: ' + data.username);
+
+				$scope.usersEnabledToCollect = CollectableUsers.query({ 
+					birthdayUser: data.username
+				});
+				$scope.firstSelected = $scope.usersEnabledToCollect[1];
+				$scope.secondSelected = $scope.usersEnabledToCollect[1];
 			});
-			
 		};
 
 		$scope.upgradeBirthday = function(){
@@ -51,12 +59,24 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 			birthdayFund.state = 'Active';
 			birthdayFund.usersCollecting.push({'name': $scope.authentication.user.username});
 
+			// Se cargan los usuarios y montos de los mismos tomados del scope
+
 			birthdayFund.$update(function() {
 				$location.path('/home');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
+
+		$scope.addFirstSelected = function(dato) {
+	        console.log('cambios de dato 1 !!!: ' + dato);
+	        $scope.primerUsuarioAgregado = dato;
+	    };
+
+	    $scope.addSecondSelected = function(dato) {
+	        console.log('cambios de dato 2 !!!: ' + dato);
+	        $scope.segundoUsuarioAgregado = dato;
+	    };
 
 	}
 ]).filter('filterState', function(){

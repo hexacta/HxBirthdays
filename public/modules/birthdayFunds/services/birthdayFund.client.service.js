@@ -21,4 +21,9 @@ angular.module('birthdayFunds').factory('BirthdayFunds', ['$resource',
 			}
 		});
 	}
+]).factory('CollectableUsers', ['$resource',
+	function($resource) {
+
+		return $resource('usersToCollect/:birthdayUser',{birthdayUser: '@userName'});
+	}
 ]);

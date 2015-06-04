@@ -110,3 +110,15 @@ exports.beginFund = function(req, res, next, id) {
 exports.read = function(req, res) {
 	res.jsonp(req.birthdayFund);
 };
+
+exports.users = function (req,res,next,birthdayUser){
+	Usuario.find().where('username').nin([req.user.username,birthdayUser]).sort('firstName').exec(function(err, users) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(users);
+		}
+	});
+};
