@@ -14,6 +14,8 @@
 	                    Cumple años el <strong data-ng-bind="birthdayFund.birthday | date:'dd/MM/yyyy'"></strong>                  
 	                    <p>Estan juntando: <strong ng-repeat="collector in birthdayFund.usersCollecting"> {{collector.name}} - </strong>
 	                    <input name="Agregame" type="image" ng-src="modules/core/img/brand/agregar.jpg" ng-click="update(birthdayFund)"></p>
+	                     <br>
+	                    <div>Total Juntado: <strong>${{calculateTotalAmount(birthdayFund.usersGivers)}}</strong></div>
 	                </div>
 	                <div class="col-md-3" align="center">              
 	                    Tenes tiempo hasta el <strong data-ng-bind="birthdayFund.collectingDateLimit | date:'dd/MM/yyyy'"></strong>                  
