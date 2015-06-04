@@ -16,6 +16,8 @@
 	                    <input name="Agregame" type="image" ng-src="modules/core/img/brand/agregar.jpg" ng-click="update(birthdayFund)"></p>
 	                     <br>
 	                    <div>Total Juntado: <strong>${{calculateTotalAmount(birthdayFund.usersGivers)}}</strong></div>
+	                    <br>
+	                    <a data-ng-href="/#!/editBirthdayFund/{{birthdayFund.id}}/edit">Editar Colecta</a> 
 	                </div>
 	                <div class="col-md-3" align="center">              
 	                    Tenes tiempo hasta el <strong data-ng-bind="birthdayFund.collectingDateLimit | date:'dd/MM/yyyy'"></strong>                  

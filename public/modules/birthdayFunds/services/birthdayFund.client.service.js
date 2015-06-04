@@ -21,6 +21,16 @@ angular.module('birthdayFunds').factory('BirthdayFunds', ['$resource',
 			}
 		});
 	}
+]).factory('BirthdayFundChange', ['$resource',
+	function($resource) {
+
+		return $resource('editBirthdayFund/:birthdayFundId', { birthdayFundId: '@id'
+	}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}	
 ]).factory('CollectableUsers', ['$resource',
 	function($resource) {
 
