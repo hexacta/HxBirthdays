@@ -93,6 +93,8 @@ var UserSchema = new Schema({
 	}
 });
 
+UserSchema.set('versionKey', false);
+
 /**
  * Hook a pre save method to hash the password
  */

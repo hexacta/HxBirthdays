@@ -48,7 +48,6 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 				}
 			} 
 			user.$update(function() {
-				$location.path('/settings/profile');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -62,7 +61,6 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 				}
 			} 
 			loginUser.$update(function() {
-				$location.path('/settings/profile');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
