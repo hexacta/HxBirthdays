@@ -4,6 +4,10 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 	function($scope, Users, Authentication, $location) {
 		$scope.user = Authentication.user;
 		$scope.selectedFriends = [];
+		$scope.friend1 = null;
+		$scope.friend2 = null;
+		$scope.friend3 = null;
+		$scope.friend4 = null;
 
   		$scope.find = function() {
 			$scope.users = Users.query();
@@ -52,7 +56,6 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 		$scope.upgradeUser = function() {
 			var user = new Users($scope.user);
 			$scope.addFriends();
-
 			for (var i = $scope.selectedFriends.length - 1; i >= 0; i--) {
 				if ($scope.isFriend($scope.selectedFriends[i]) < 0) {
 					user.usersFriends.push({'username': $scope.selectedFriends[i].username, 
