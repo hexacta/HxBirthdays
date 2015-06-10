@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authentication', '$location',
+angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authentication', '$location', 
 	function($scope, Users, Authentication, $location) {
 		$scope.user = Authentication.user;
 		$scope.selectedFriends = [];
@@ -18,27 +18,41 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 			return -1;
 		};
 
-		$scope.isFriendSelected = function(userSelected) {
-			for (var i = $scope.selectedFriends.length - 1; i >= 0; i--) {
-				if (angular.equals(userSelected.username, $scope.selectedFriends[i].username)) {
-					return i;
-				} 
-			} 
-			return -1;
+		$scope.findUser = function(displayName) {
+			for (var i = $scope.users.length - 1; i >= 0; i--) {
+				if (angular.equals(displayName, $scope.users[i].displayName)) {
+					return $scope.users[i];
+				}
+			}
 		};
 
-		$scope.addRemoveFriendList = function(userSelected, check) {
-			var isFriendSelected = $scope.isFriendSelected(userSelected);
-			// Si ya esta en la lista y no está chequeado -> lo quiero borrar
-			if (isFriendSelected >= 0 && check) {
-				$scope.selectedFriends.splice(isFriendSelected, 1);			
-			} else {				
-				$scope.selectedFriends.push(userSelected);
+		$scope.addFriends = function() {
+			if ($scope.friend1 != null) {
+				$scope.selectedFriends.push($scope.findUser($scope.friend1));
 			}
-		}; 
+			if ($scope.friend2 != null) {
+				$scope.selectedFriends.push($scope.findUser($scope.friend2));
+			}
+			if ($scope.friend3 != null) {
+				$scope.selectedFriends.push($scope.findUser($scope.friend3));
+			}
+			if ($scope.friend4 != null) {
+				$scope.selectedFriends.push($scope.findUser($scope.friend4));
+			}
+		}
+
+		$scope.cleanInputs = function() {
+			$scope.friend1 = null;
+			$scope.friend2 = null;
+			$scope.friend3 = null;
+			$scope.friend4 = null;
+		}
+
 
 		$scope.upgradeUser = function() {
 			var user = new Users($scope.user);
+			$scope.addFriends();
+
 			for (var i = $scope.selectedFriends.length - 1; i >= 0; i--) {
 				if ($scope.isFriend($scope.selectedFriends[i]) < 0) {
 					user.usersFriends.push({'username': $scope.selectedFriends[i].username, 
@@ -48,9 +62,11 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 				}
 			} 
 			user.$update(function() {
+				$location.path('/settings/profile');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			$scope.cleanInputs();
 		};
 
 		$scope.removeFriend = function(username) {

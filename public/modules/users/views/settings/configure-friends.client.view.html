@@ -1,59 +1,62 @@
 <section data-ng-controller="UsersController" data-ng-init="find()">
-	<div class="content col-md-9">
-		<div class="content text-left">
-			<h2>Seleccionar amigos</h2>
-		</div>
-		<br>
-		<form name="configureForm" class="form-horizontal" data-ng-submit="upgradeUser()" novalidate>
-		<fieldset>
-	    	<div class="row">       
-	        	<div class="col-md-6">              
-					<input type="text" class="form-control" ng-model="filtroAmigo" placeholder="Amigos"/>
-				</div>
-				<div class="col-md-4">
-					<input type="submit" value="Listo!" class="btn btn-default"	/>
-				</div> 	
-			</div>	
-			<br>
-			<div class="alert alert-info" data-ng-show="error">
-				<button class="close" data-dismiss="alert"><span>&times;</span></button>
-  				 <p data-ng-bind="error"/>
-			</div>	
-		 	<div id="usersResults" class="table-striped">
-			    <div ng-repeat="userFriend in users | filter: filtroAmigo" class="list-group-item">
-			    	<div class="row">       
-			        	<div class="col-md-2">              
-			            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{userFriend.username}}" />
-			            </div>
-			            <div class="col-md-2">
-			            	<h4 class="list-group-item-heading" data-ng-bind="userFriend.firstName + ' ' +userFriend.lastName"></h4>
-			            </div>
-			            <div class="col-md-2">
-			            	<input type="checkbox" data-ng-model="check" ng-click="addRemoveFriendList(userFriend, check)">
-			            </div>		
-			        </div>
-			    </div>
-			</div> 
-	    </div>
-		</fieldset>
-		<form>		
+<div class="content col-md-9">
+	<div class="content text-left">
+		<h2>Seleccionar amigos</h2>
+		* Escribi el nombre de tu amigo
 	</div>
-	<div class="content col-md-3" data-ng-show="user.usersFriends.length > 0">
-		<div id="friendResults" class="table-striped">
-			<div class="content text-right">
-				<h4>Mis amigos</h4>
+	<br>
+	<form name="configureFormInput" class="form-horizontal" data-ng-submit="upgradeUser()" novalidate>
+		<fieldset>
+    	<div class="row">       
+        	<div class="col-md-8">              
+				<input type="text" class="form-control" data-ng-model="friend1" list="friend" placeholder="Amigo">
 			</div>
-			<div ng-repeat="friend in user.usersFriends" class="list-group-item">
-				<div class="row">
-		            <div class="col-md-6">
-		            	<h4 class="list-group-item-heading" data-ng-bind="friend.displayName"></h4><br>
-		            	<input name="Eliminar" type="image" ng-src="modules/core/img/brand/eliminar.jpg" width="25" height="25" ng-click="removeFriend(friend.username)"></p>
-		            </div>
-		        	<div class="col-md-6">              
-		            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{friend.username}}" />
-		            </div>
-		        </div>
-		    </div>
-		</div> 	
-	</div>	
+		</div>	
+		<br>			
+    	<div class="row">       
+        	<div class="col-md-8">              
+				<input type="text" class="form-control" data-ng-model="friend2" list="friend" placeholder="Amigo">
+			</div>
+		</div>	
+		<br>			
+    	<div class="row">       
+        	<div class="col-md-8">              
+				<input type="text" class="form-control" data-ng-model="friend3" list="friend" placeholder="Amigo">
+			</div>
+		</div>	
+		<br>			
+    	<div class="row">       
+	       	<div class="col-md-8">              
+				<input type="text" class="form-control" data-ng-model="friend4" list="friend" placeholder="Amigo">
+			</div>
+				<div class="col-md-4">
+				<input type="submit" value="Listo!" class="btn btn-default"	/>
+			</div> 	
+		</div>				
+		<br>			
+		<datalist id="friend">
+    		<option data-ng-repeat="user in users" value="{{user.displayName}}">
+  		</datalist>
+		<br>			
+	</fieldset>
+	<form>		
+</div>	
+<div class="content col-md-3" data-ng-show="user.usersFriends.length > 0">
+	<div id="friendResults" class="table-striped">
+		<div class="content text-right">
+			<h4>Mis amigos</h4>
+		</div>
+		<div ng-repeat="friend in user.usersFriends" class="list-group-item">
+			<div class="row">
+	            <div class="col-md-6">
+	            	<h4 class="list-group-item-heading" data-ng-bind="friend.displayName"></h4><br>
+	            	<input name="Eliminar" type="image" ng-src="modules/core/img/brand/eliminar.jpg" width="25" height="25" ng-click="removeFriend(friend.username)"></p>
+	            </div>
+	        	<div class="col-md-6">              
+	            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{friend.username}}" />
+	            </div>
+	        </div>
+	    </div>
+	</div> 	
+</div>	
 </section>

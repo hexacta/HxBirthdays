@@ -41,9 +41,6 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 			$scope.birthdayFund = BirthdayFundBegin.get({ 
 				birthdayFundId: $stateParams.birthdayFundId
 			},function (data){
-
-				console.log('nombre cum: ' + data.username);
-
 				$scope.usersEnabledToCollect = CollectableUsers.query({ 
 					birthdayUser: data.username
 				});
