@@ -27,26 +27,26 @@ angular.module('users').controller('UsersController', ['$scope', 'Users', 'Authe
 		};
 
 		$scope.addFriends = function() {
-			if ($scope.friend1 != null) {
+			if ($scope.friend1 !== null) { 
 				$scope.selectedFriends.push($scope.findUser($scope.friend1));
 			}
-			if ($scope.friend2 != null) {
+			if ($scope.friend2 !== null) {
 				$scope.selectedFriends.push($scope.findUser($scope.friend2));
 			}
-			if ($scope.friend3 != null) {
+			if ($scope.friend3 !== null) {
 				$scope.selectedFriends.push($scope.findUser($scope.friend3));
 			}
-			if ($scope.friend4 != null) {
+			if ($scope.friend4 !== null) {
 				$scope.selectedFriends.push($scope.findUser($scope.friend4));
 			}
-		}
+		};
 
 		$scope.cleanInputs = function() {
 			$scope.friend1 = null;
 			$scope.friend2 = null;
 			$scope.friend3 = null;
 			$scope.friend4 = null;
-		}
+		};
 
 
 		$scope.upgradeUser = function() {
