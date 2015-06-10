@@ -76,12 +76,7 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 	    };
 
 	    $scope.calculateTotalAmount = function(givers) {
-			var total = 0;
-			for(var i = 0; i < givers.length; i++) {
-			var giver = givers[i];
-			total += giver.amount;
-			}
-			return total;
+			return givers.reduce(function(a, b){ return a.amount + b.amount;});
 		};
 	}
 ]).filter('filterState', function(){
