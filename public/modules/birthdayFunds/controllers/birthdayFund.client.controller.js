@@ -41,9 +41,6 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 			$scope.birthdayFund = BirthdayFundBegin.get({ 
 				birthdayFundId: $stateParams.birthdayFundId
 			},function (data){
-
-				console.log('nombre cum: ' + data.username);
-
 				$scope.usersEnabledToCollect = CollectableUsers.query({ 
 					birthdayUser: data.username
 				});
@@ -78,6 +75,9 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 	        $scope.segundoUsuarioAgregado = dato;
 	    };
 
+	    $scope.calculateTotalAmount = function(givers) {
+			return givers.reduce(function(a, b){ return a.amount + b.amount;});
+		};
 	}
 ]).filter('filterState', function(){
 	return function(input, stateParam){

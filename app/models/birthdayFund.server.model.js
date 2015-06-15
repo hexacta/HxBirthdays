@@ -38,10 +38,6 @@ var BirthdayFundSchema = new Schema({
 			   {amount: {type: Number,
 						default: 0}}]
 	},
-	amount: {
-		type: Number,
-		default: 0
-	}, 
 	collectingDateLimit: {
 		type: String
 	},

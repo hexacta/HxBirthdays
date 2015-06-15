@@ -16,6 +16,10 @@ module.exports = function(app) {
 		.get(users.requiresLogin,birthdayFund.read)
 		.put(birthdayFund.update);
 
+	app.route('/editBirthdayFund/:birthdayFundId')
+		.get(birthdayFund.read)
+		.put(birthdayFund.update);
+
 	app.route('/usersToCollect/:birthdayUser')
 		.get(users.requiresLogin,birthdayFund.users);
 

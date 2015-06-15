@@ -11,6 +11,9 @@ angular.module('birthdayFunds').config(['$stateProvider',
 		}).state('createbirthdayFund', {
 			url: '/createBirthdayFunds/:birthdayFundId/create',
 			templateUrl: 'modules/birthdayFunds/views/create-birthdayFund.client.view.html'
+		}).state('editBirthdayFund', {
+			url: '/editBirthdayFund/:birthdayFundId/edit',
+			templateUrl: 'modules/birthdayFunds/views/edit-birthdayFund.client.view.html'
 		});
 	}
 ]);
