@@ -1,22 +1,23 @@
 'use strict';
 
-var birthdayFund = require('../../app/controllers/birthdayFund.server.controller');
+var birthdayFund = require('../../app/controllers/birthdayFund.server.controller'),
+	users = require('../../app/controllers/users.server.controller');
 
 module.exports = function(app) {
 
 	// birthdayFund Routes
 	app.route('/birthdayFunds')
-		.get(birthdayFund.list);
+		.get(users.requiresLogin,birthdayFund.list);
 
 	app.route('/birthdayFunds/:birthdayFundId')
 		.put(birthdayFund.update);
 
 	app.route('/createBirthdayFunds/:birthdayFundId')
-		.get(birthdayFund.read)
+		.get(users.requiresLogin,birthdayFund.read)
 		.put(birthdayFund.update);
 
 	app.route('/usersToCollect/:birthdayUser')
-		.get(birthdayFund.users);
+		.get(users.requiresLogin,birthdayFund.users);
 
 	app.param('birthdayFundId', birthdayFund.beginFund);
 	app.param('birthdayUser', birthdayFund.users);

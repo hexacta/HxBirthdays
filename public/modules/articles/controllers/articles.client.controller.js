@@ -4,6 +4,10 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Articles) {
 		$scope.authentication = Authentication;
 
+		// If user is not signed in then redirect back home
+	//	if (!$scope.authentication.user) $location.path('/signin');
+
+
 		$scope.create = function() {
 			var article = new Articles({
 				title: this.title,

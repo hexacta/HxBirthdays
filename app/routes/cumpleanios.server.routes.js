@@ -6,7 +6,7 @@ module.exports = function(app) {
 
 	// Cumpleanios Routes
 	app.route('/cumpleanios')
-		.get(cumpleanios.list)
+		.get(users.requiresLogin,cumpleanios.list)
 		.post(users.requiresLogin, cumpleanios.create);
 
 	app.route('/cumpleanios/:cumpleanioId')
@@ -16,11 +16,11 @@ module.exports = function(app) {
 
 
 	app.route('/cumpleanios-no-colectados')
-		.get(cumpleanios.cumpleanierosParaLosQueNoJuntan)
+		.get(users.requiresLogin,cumpleanios.cumpleanierosParaLosQueNoJuntan)
 		.post(users.requiresLogin, cumpleanios.create);
 
 	app.route('/cumpleanios-no-colectados/:cumpleanioId')
-		.get(cumpleanios.read)
+		.get(users.requiresLogin,cumpleanios.read)
 		.put(cumpleanios.postularseParaJuntar)
 		.delete(users.requiresLogin, cumpleanios.hasAuthorization, cumpleanios.delete);
 

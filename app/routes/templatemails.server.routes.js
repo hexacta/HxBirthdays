@@ -6,11 +6,11 @@ module.exports = function(app) {
 
 	// Templatemails Routes
 	app.route('/templatemails')
-		.get(templatemails.list)
+		.get(users.requiresLogin,templatemails.list)
 		.post(users.requiresLogin, templatemails.create);
 
 	app.route('/templatemails/:templatemailId')
-		.get(templatemails.read)
+		.get(users.requiresLogin,templatemails.read)
 		.put(users.requiresLogin, templatemails.hasAuthorization, templatemails.update)
 		.delete(users.requiresLogin, templatemails.hasAuthorization, templatemails.delete);
 
