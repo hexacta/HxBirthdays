@@ -4,9 +4,9 @@
 angular.module('cumpleanios').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Cumpleaños', 'cumpleanios', 'dropdown', '/cumpleanios(/create)?');
-		Menus.addSubMenuItem('topbar', 'cumpleanios', 'Lista de Cumpleaños', 'cumpleanios');
-		Menus.addSubMenuItem('topbar', 'cumpleanios', 'Nuevo Cumpleaño', 'cumpleanios/create');
-		Menus.addSubMenuItem('topbar', 'cumpleanios', 'Para estos no se junta todavia', 'cumplanios-no-colectados');
+		Menus.addMenuItem('topbar', 'Cumplea&ntilde;os', 'cumpleanios', 'dropdown', '/cumpleanios(/create)?');
+		Menus.addSubMenuItem('topbar', 'cumpleanios', 'Lista de Cumplea&ntilde;os', 'cumpleanios');
+		Menus.addSubMenuItem('topbar', 'cumpleanios', 'Nuevo Cumplea&ntilde;o', 'cumpleanios/create');
+		Menus.addSubMenuItem('topbar', 'cumpleanios', 'Para estos no se junta todav&iacute;a', 'cumplanios-no-colectados');
 	}
 ]);

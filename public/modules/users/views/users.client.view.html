@@ -6,7 +6,7 @@
 		<a data-ng-repeat="usuario in users" data-ng-href="#!/users/{{usuario._id}}" class="list-group-item">
 				Username -> <span data-ng-bind="usuario.username"></span><br>
 				Display Name -> <span data-ng-bind="usuario.firstName + ' ' +usuario.lastName"></span><br>
-	            Cumpleaños el <strong data-ng-bind="usuario.birthday | date:'dd/MM/yyyy'"></strong>                  
+	            Cumplea&ntilde;os el <strong data-ng-bind="usuario.birthday | date:'dd/MM/yyyy'"></strong>                  
 	            <img alt="Photo" class="img-circle text-left" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{usuario.username}}" />
 		</a>
 	</div>

@@ -1,13 +1,13 @@
 <section data-ng-controller="CumpleaniosController" data-ng-init="cumpleaniosNoColectados()">
     <div class="page-header">
-        <h1>No se esta juntando para los siguientes Cumpleanios</h1>
+        <h1>No se esta juntando para los siguientes Cumplea&ntilde;ios</h1>
     </div>
     <div class="list-group">
         <div data-ng-repeat="cumpleanio in cumpleanios" class="list-group-item">
 			<small class="list-group-item-text">
 				El dia
 				<span data-ng-bind="cumpleanio.birthday | date:'medium'"></span>
-				cumple años
+				cumplea&ntilde;os
                 <span data-ng-bind="cumpleanio.name"></span>
                 <a data-ng-href="/#!/cumpleanios/{{cumpleanio.id}}/edit" >
 			</small>
