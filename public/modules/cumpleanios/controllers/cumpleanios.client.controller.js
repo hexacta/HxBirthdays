@@ -44,8 +44,6 @@ angular.module('cumpleanios').controller('CumpleaniosController', ['$scope', '$s
 		$scope.update = function() {
 
 			var cumpleanio = $scope.cumpleanio;
-			console.log('quiere hacer update de cumpleaños!!!: ' + cumpleanio.id);
-
 			cumpleanio.$update(function() {
 				$location.path('cumpleanios/');
 			}, function(errorResponse) {

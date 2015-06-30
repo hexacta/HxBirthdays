@@ -72,8 +72,12 @@ exports.list = function(req, res) {
  */
 exports.BirthdayFundByID = function(req, res, next, id) { 
 	BirthdayFund.findById(id).populate('user', 'displayName').exec(function(err, BirthdayFund) {
-		if (err) return next(err);
-		if (! BirthdayFund) return next(new Error('Failed to load BirthdayFund ' + id));
+		if (err) {
+			return next(err);
+		}
+		if (! BirthdayFund) {
+			return next(new Error('Failed to load BirthdayFund ' + id));
+		}
 		req.BirthdayFund = BirthdayFund ;
 		next();
 	});

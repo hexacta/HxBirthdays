@@ -8,9 +8,9 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6">          
-							Juntar para <strong data-ng-bind="birthdayFund.firstname + ' ' + birthdayFund.lastname"></strong><br>
-							Que cumple el d&iacute;a <strong data-ng-bind="birthdayFund.birthday | date: 'dd/MM' "></strong><br>
-							<label class="control-label" for="limit_date_fund">Fecha l&iacute;mite para juntar</label><br>
+							Juntar para <strong data-ng-bind="birthdayFund.firstname + ' ' + birthdayFund.lastname"></strong>
+							Que cumple el d&iacute;a <strong data-ng-bind="birthdayFund.birthday | date: 'dd/MM' "></strong>
+							<label class="control-label" for="limit_date_fund">Fecha l&iacute;mite para juntar</label>
 							<input type="date" ngRequired="" name="limit_date_fund" class="form-control" ng-model="birthdayFund.collectingDateLimit" required />
 							Juntan:
 						</div>
@@ -25,6 +25,8 @@
 						 <div>
 							 <label>Usuario 1</label>
 							 <select ng-model="firstSelected" ng-options="user.displayName for user in usersEnabledToCollect" ng-change='addFirstSelected(firstSelected.displayName)'></select>
+							 <label>Monto</label>
+							 <input type="number">
 						</div>
 					 	 <div>
 						 	 <label>Agregaste a:</label>

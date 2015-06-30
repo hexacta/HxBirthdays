@@ -89,8 +89,12 @@ exports.list = function(req, res) {
  */
 exports.templatemailByID = function(req, res, next, id) { 
 	Templatemail.findById(id).populate('user', 'displayName').exec(function(err, templatemail) {
-		if (err) return next(err);
-		if (! templatemail) return next(new Error('Failed to load Templatemail ' + id));
+		if (err) {
+			return next(err);
+		}
+		if (! templatemail){
+			return next(new Error('Failed to load Templatemail ' + id));
+		}
 		req.templatemail = templatemail ;
 		next();
 	});

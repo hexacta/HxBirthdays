@@ -13,9 +13,7 @@
 	                    Cumple a&ntilde;os el <strong data-ng-bind="birthdayFund.birthday | date:'dd/MM/yyyy'"></strong>                  
 	                    <p>Estan juntando: <strong ng-repeat="collector in birthdayFund.usersCollecting"> {{collector.name}} - </strong>
 	                    <input name="Agregame" type="image" ng-src="modules/core/img/brand/agregar.jpg" ng-click="update(birthdayFund)"></p>
-	                    <br>
 	                    <div>Total Juntado: <strong>${{calculateTotalAmount(birthdayFund.usersGivers)}}</strong></div>
-	                    <br>
 	                    <a data-ng-href="/#!/editBirthdayFund/{{birthdayFund.id}}/edit">Editar Colecta</a> 
 	                </div>
 	                <div class="col-md-3" align="center">              
@@ -30,12 +28,11 @@
 	</div>	
 	<div class="content col-md-3">
 	    <h4 align="right">Pr&oacute;ximos Cumplea&ntilde;os</h4>
-	    <br>
 	    <div class="list-group">
 	        <div data-ng-repeat="birthdayFund in birthdayFunds | filterState:'Inactive'" class="list-group-item">
 	            <div class="row">       
 	                <div class="col-md-6">              
-	                    <h4 class="list-group-item-heading" data-ng-bind="birthdayFund.firstname + ' ' +birthdayFund.lastname"></h4><br>
+	                    <h4 class="list-group-item-heading" data-ng-bind="birthdayFund.firstname + ' ' +birthdayFund.lastname"></h4>
 	                    <strong data-ng-bind="birthdayFund.birthday | date:'dd/MM/yyyy'"></strong>                  
 	                    <a data-ng-href="/#!/createBirthdayFunds/{{birthdayFund.id}}/create"> Quiero juntar!</a>
 	                </div>

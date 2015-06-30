@@ -84,8 +84,9 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$scope', 
 		var res = [];
 
 		angular.forEach(input, function(elem){
-			if(elem.state === stateParam)
+			if(elem.state === stateParam){
 				res.push(elem);
+			}
 
 		});
 
