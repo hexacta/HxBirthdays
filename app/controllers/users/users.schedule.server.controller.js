@@ -13,11 +13,11 @@ function buscarUsuarios(opts,client){
 			User.findOne().where('username').equals(entry.object.name).exec(function(err, users){
 			if (!users) {
 				var newUser = new User({
-					firstName: entry.givenName,
-					lastName: entry.sn,
-					displayName: entry.givenName +' ' + entry.sn,
-					email: entry.mail,
-					username: entry.name,
+					firstName: entry.object.givenName,
+					lastName: entry.object.sn,
+					displayName: entry.object.givenName +' ' + entry.object.sn,
+					email: entry.object.mail,
+					username: entry.object.name,
 					birthday: '8/6/1984',
 					usersFriends : []
 					});
@@ -36,6 +36,7 @@ function obtenerUsuario(){
 	var client = ldap.createClient({
 	  url: lector.getURL()
 	});
+
 
 	client.bind(lector.getUser(), lector.getPass(), function(err) {
 	  	console.log('Conectado a LDAP!');
