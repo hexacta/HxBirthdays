@@ -109,3 +109,24 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+var schedule = require('node-schedule');
+
+var k = schedule.scheduleJob('* * * * *', function() {
+    console.log('*********PASE POR EL SCHEDULER 1**************');
+    /*var nodemailer = require('nodemailer');
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'hxbirthdays@gmail.com',
+            pass: 'HexactaBirthdays1'
+        }
+    });
+    transporter.sendMail({
+        from: 'hxbirthdays@gmail.com',
+        to: 'hxbirthdays@gmail.com',
+        subject: 'Ospin come gato tira piedra',
+        text: 'Este es un mensaje autogenerado para decir: Querido Ospin, siscate, siscate, siscate. Firma: El siscador'
+    });*/
+    console.log('*********PASE POR EL SCHEDULER 2**************');
+});
