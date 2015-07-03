@@ -10,20 +10,29 @@ var mongoose = require('mongoose'),
  * Templatemail Schema
  */
 var TemplatemailSchema = new Schema({
-	asunto: {
+	subject: {
 		type: String,
 		default: '',
 		required: 'Por favor complete el asunto del mail',
 		trim: true
 	},
-	cuerpo: {
+	text: {
 		type: String,
 		default: '',
 		required: 'Por favor complete el cuerpo del mail',
 		trim: true
 	},
-	destinatarios: {
+	html: {
+		type: String,
+		default: '',
+		required: 'Por favor complete el cuerpo del mail',
+		trim: true
+	},
+	to: {
 		type: [String]
+	},
+	sender: {
+		type: String
 	},
 	created: {
 		type: Date,
