@@ -1,4 +1,4 @@
-<section data-ng-controller="BirthdayFundController" data-ng-init="beginFund()">
+<section data-ng-controller="BirthdayFundController" data-ng-init="editFund()">
    <div class="page-header">
 		<h2>Editar colecta</h2>
 	</div>
@@ -18,28 +18,49 @@
 							<div><img src="http://fotos.hexacta.com:8181/photo.php?username={{birthdayFund.username}}" class="img-circle text-left"></img></div>
 						</div>					
 					</div>
+
 				</div>
 				<div class="form-group">
-					<label class="control-label">Quienes pusieron?</label>
+					<label class="control-label">Agregar Colaborador</label>
 					<div class="controls">
-						 <div>
-							 <label>Usuario 1</label>
-							 <select ng-model="firstSelected" ng-options="user.displayName for user in usersEnabledToCollect" ng-change='addFirstSelected(firstSelected.displayName)'></select>
-							 <label>Monto</label>
-							 <input type="number">
-						</div>
-					 	 <div>
-						 	 <label>Agregaste a:</label>
-							 <div ng-bind="primerUsuarioAgregado"></div>
-						</div>
+						 <div class="row">       
+			        		<div class="col-md-8">              
+								<input type="text" class="form-control" data-ng-model="giver" list="friend" placeholder="Amigo">
+							</div>
+						</div>	
+
+						<div class="col-md-4">
+							<input type="submit" value="Agregar" class="btn btn-default"/>
+						</div> 	
+
+						<datalist id="friend">
+			    			<option data-ng-repeat="user in users" value="{{user.displayName}}">
+			  			</datalist>	
 					</div>
 				</div>
-				<div class="form-group">
-					<input type="submit" value="Comenzar a juntar!" class="btn btn-default" ng-disabled="birthdayFundForm.limit_date_fund.$dirty  && birthdayFundForm.limit_date_fund.$invalid" />
-					<div id="apendear"></div>
-				</div>
+
 				<div class="error" ng-show="birthdayFundForm.limit_date_fund.$error.required">La fecha l&iacute;mite es requerida!</div>
 			</fieldset>
 		</form>
 	</div>
+
+	<div class="content col-md-3" data-ng-show=" birthdayFund.usersGivers.length > 0">
+		<div id="friendResults" class="table-striped">
+			<div class="content text-right">
+				<h4>Quienes Colaboran</h4>
+			</div>
+			<div ng-repeat="giver in birthdayFund.usersGivers" class="list-group-item">
+				<div class="row">
+		            <div class="col-md-6">
+		            	<h4 class="list-group-item-heading" data-ng-bind="giver.name"></h4><br>
+		            	<input name="Eliminar" type="image" ng-src="modules/core/img/brand/eliminar.jpg" width="25" height="25" ng-click="removeFriend(friend.username)"></p>
+		            </div>
+		        	<div class="col-md-6">              
+		            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{giver.username}}" />
+		            </div>
+		        </div>
+		    </div>
+		</div> 	
+	</div>	
+
 </section>
