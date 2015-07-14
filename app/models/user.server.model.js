@@ -90,6 +90,10 @@ var UserSchema = new Schema({
 			username: {type: String}, 
 			displayName: {type: String}	
 			}]
+	},
+	birthday: {
+		type: Date,
+		default: Date.now
 	}
 });
 
