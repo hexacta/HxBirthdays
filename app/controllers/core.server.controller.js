@@ -5,7 +5,10 @@
  */
  var mongoose = require('mongoose'),
 	 User = mongoose.model('User'),
-	 obtenerUsuario = require('./users/users.schedule.server.controller');
+	 BirthdayFund = mongoose.model('BirthdayFund'),
+	 obtenerUsuario = require('./users/users.schedule.server.controller'),
+	 generateBirthdayFund = require('./birthdayFund.schedule.server.controller');
+	 
 
 exports.index = function(req, res) {
 	res.render('index', {
@@ -17,3 +20,4 @@ exports.index = function(req, res) {
 
 
 obtenerUsuario.registroDeUsuarios();
+generateBirthdayFund.generateBirthdayFund();
