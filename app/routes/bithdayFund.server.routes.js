@@ -25,6 +25,7 @@ module.exports = function(app) {
 
 	app.param('birthdayFundId', birthdayFund.beginFund);
 	app.param('birthdayUser', birthdayFund.users);
+	app.param('birthdayFundId', birthdayFund.editFund);
 
 
 };
