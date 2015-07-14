@@ -31,10 +31,12 @@ var BirthdayFundSchema = new Schema({
 		default: Date.now
 	},
 	usersCollecting: {
-		type: [{name: {type: String}}]
+		type: [{firstname: {type: String}},
+				{username: {type: String}}]
 	},
 	usersGivers: {
-		type: [{name: {type: String}},
+		type: [{firstname: {type: String}},
+				{username: {type: String}},
 			   {amount: {type: Number,
 						default: 0}}]
 	},
