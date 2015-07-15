@@ -14,7 +14,7 @@ exports.loginLDAP = function(req,res){
 	});
 	
 	client.bind(String(req.body.username) + '@hexacta.com', String(req.body.password), function(err) {
-		if(!err){			
+		if(!err){
 			User.findOne().where('username').equals(req.body.username).exec(function(err, usuario) {
 				if (!err) {
 					req.login(usuario, function(err) {

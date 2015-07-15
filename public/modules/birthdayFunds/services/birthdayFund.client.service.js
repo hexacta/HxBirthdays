@@ -38,7 +38,7 @@ angular.module('birthdayFunds').factory('BirthdayFunds', ['$resource',
 	}
 ]).factory('BirthdayFundEdit', ['$resource',
 	function($resource) {
-		return $resource('editBirthdayFund/:birthdayFundId', { birthdayFundId: '@id'
+		return $resource('editBirthdayFund/:birthdayFundId', { birthdayFundId: '@_id'
 	}, {
 		update: {
 			method: 'PUT'

@@ -11,7 +11,7 @@ function isABirthdayPerson(user) {
 	var today = new Date();
 	//Realizar la evaluacion que se considere correcta para generar las colectas con este proceso automatico.
 	if (user.birthday.getMonth() === today.getMonth()) {
-		console.log('>>>> ' + user.firstName + ' Cumple este Mes');
+		console.log('>>>> ' + user.firstName + ' ' + user.lastName + ' Cumple este Mes');
 		return true;
 	}
 	else {
@@ -47,5 +47,5 @@ function generate() {
 
 
 exports.generateBirthdayFund = function(){
-	schedule.scheduleJob('* * * * *', generate());
+	//schedule.scheduleJob('* * * * *', generate());
 };	 

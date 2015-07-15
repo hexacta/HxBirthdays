@@ -3,7 +3,8 @@
 var schedule = require('node-schedule');
 var mongoose = require('mongoose'),
 	User = mongoose.model('User');
-var request = require('request');	 
+var request = require('request');
+var fs = require('fs');	 
 
 //Generacion con LDAP
 /*function generarUsuarios(opts,client){
@@ -47,7 +48,7 @@ function generarUsuario() {
 						usersFriends : []
 						});
 					newUser.save();
-					console.log('Se creo el usuario: ' + obj.username);
+					fs.appendFile('usuariosCreados.txt', obj.username.toString() + '\n', function (err) {}); 
 				}
 			});
 		});
@@ -61,7 +62,7 @@ function generarUsuario() {
 
 
 exports.registroDeUsuarios = function(){
-	//User.remove().exec();
+	//generarUsuario();
 	//schedule.scheduleJob('0 0 * * *', generarUsuario());
 };
 
