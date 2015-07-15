@@ -14,7 +14,7 @@
 	                    <p>Estan juntando: <strong ng-repeat="collector in birthdayFund.usersCollecting"> {{collector.name}} - </strong>
 	                    <input name="Agregame" type="image" ng-src="modules/core/img/brand/agregar.jpg" ng-click="update(birthdayFund)"></p>
 	                    <div>Total Juntado: <strong>${{calculateTotalAmount(birthdayFund.usersGivers)}}</strong></div>
-	                    <a data-ng-href="/#!/editBirthdayFund/{{birthdayFund.id}}/edit">Editar Colecta</a> 
+	                    <a data-ng-href="/#!/editBirthdayFund/{{birthdayFund._id}}/edit">Editar Colecta</a> 
 	                </div>
 	                <div class="col-md-3" align="center">              
 	                    Tenes tiempo hasta el <strong data-ng-bind="birthdayFund.collectingDateLimit | date:'dd/MM/yyyy'"></strong>                  
@@ -34,7 +34,7 @@
 	                <div class="col-md-6">              
 	                    <h4 class="list-group-item-heading" data-ng-bind="birthdayFund.firstname + ' ' +birthdayFund.lastname"></h4>
 	                    <strong data-ng-bind="birthdayFund.birthday | date:'dd/MM/yyyy'"></strong>                  
-	                    <a data-ng-href="/#!/createBirthdayFunds/{{birthdayFund.id}}/create"> Quiero juntar!</a>
+	                    <a data-ng-href="/#!/createBirthdayFunds/{{birthdayFund._id}}/create"> Quiero juntar!</a>
 	                </div>
 	                <div class="col-md-2">
 	                    <img alt="BirthdayFund" class="img-circle text-left" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{birthdayFund.username}}"/>
