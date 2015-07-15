@@ -29,7 +29,7 @@ function getListOfBirthdayFund(){
 //Borrar cuando se trabaje con datos reales
 function getBirthday(req, res, next ,id){
 	console.log('***ID de birthdayFund a editar: ' + id);
-	BirthdayFund.findOne().where('id').equals(id).exec(function(err, birthdayFund) {
+	BirthdayFund.findOne().where('_id').equals(id).exec(function(err, birthdayFund) {
 		if (err) return next(err);
 		if (!birthdayFund) return next(new Error('Failed to load BirthdayFund ' + id));
 		req.birthdayFund = birthdayFund;
@@ -107,7 +107,7 @@ exports.hasAuthorization = function(req, res, next) {
 exports.beginFund = function(req, res, next, id) {
 
 	// Usar cuando se trabaje con datos reales
-	BirthdayFund.findOne().where('id').equals(id).exec(function(err, birthdayFund) {
+	BirthdayFund.findOne().where('_id').equals(id).exec(function(err, birthdayFund) {
 		if (err) return next(err);
 		if (! birthdayFund){
 
@@ -123,7 +123,7 @@ exports.beginFund = function(req, res, next, id) {
 exports.editFund = function(req, res, next, id) {
 
 	// Usar cuando se trabaje con datos reales
-	BirthdayFund.findOne().where('id').equals(id).exec(function(err, birthdayFund) {
+	BirthdayFund.findOne().where('_id').equals(id).exec(function(err, birthdayFund) {
 		if (err) return next(err);
 		if (! birthdayFund){
 
