@@ -76,22 +76,41 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$http','$
 			});
 		};
 
-		$scope.addGivers = function() {
-			console.log('paso por addGivers');
-			console.log($scope.giver);
-			console.log('birthdayFundId: ' + $scope.birthdayFund.id);
-			var birthdayFund = $scope.birthdayFund;
-			birthdayFund.usersGivers.push({'name': $scope.giver, 'amount': 10});
-			console.log('Lista Givers: ' + birthdayFund.usersGivers);
+		$scope.findUser = function(displayName) {
+			for (var i = $scope.users.length - 1; i >= 0; i--) {
+				if (angular.equals(displayName, $scope.users[i].displayName)) {
+					return $scope.users[i];
+				}
+			}
+		};
 
+		$scope.addGivers = function() {			
+			var newGiver = $scope.findUser($scope.giver);
+
+			var birthdayFund = $scope.birthdayFund;
+			birthdayFund.usersGivers.push({'displayName': newGiver.displayName, 
+						                   'username': newGiver.username, 
+						                   'amount': 10});
+			
 			birthdayFund.$update(function() {
-			$location.path('/home');
 			}, function(errorResponse) {
-				console.log('ocurrio error en el update');
 				$scope.error = errorResponse.data.message;
 				console.log(errorResponse.data);
 			});
 
+		};
+
+		$scope.removeGiver = function(username) {
+			var birthdayFund = $scope.birthdayFund;
+			for (var i = birthdayFund.usersGivers.length - 1; i >= 0; i--) {
+				if (angular.equals(birthdayFund.usersGivers[i].username, username)) {
+					birthdayFund.usersGivers.splice(i, 1);	
+				}
+			} 
+			birthdayFund.$update(function() {
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 		};
 
 		$scope.addFirstSelected = function(dato) {
