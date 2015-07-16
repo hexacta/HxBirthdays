@@ -90,7 +90,7 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$http','$
 			var birthdayFund = $scope.birthdayFund;
 			birthdayFund.usersGivers.push({'displayName': newGiver.displayName, 
 						                   'username': newGiver.username, 
-						                   'amount': 10});
+						                   'amount': $scope.giverAmount});
 			
 			birthdayFund.$update(function() {
 			}, function(errorResponse) {
@@ -123,9 +123,13 @@ angular.module('birthdayFunds').controller('BirthdayFundController', ['$http','$
 	        $scope.segundoUsuarioAgregado = dato;
 	    };
 
-	    $scope.calculateTotalAmount = function(givers) {
-			return givers.reduce(function(a, b){ return a.amount + b.amount;});
-		};
+		$scope.calculateTotalAmount = function(givers) {
+			var total = 0;
+			for (var i = givers.length - 1; i >= 0; i--) {
+				total += givers[i].amount;
+			}
+			return total;
+		}; 
 	}
 ]).filter('filterState', function(){
 	return function(input, stateParam){
