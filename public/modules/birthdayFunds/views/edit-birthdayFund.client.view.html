@@ -26,6 +26,7 @@
 						 <div class="row">       
 			        		<div class="col-md-8">              
 								<input type="text" class="form-control" data-ng-model="giver" list="friend" placeholder="Amigo">
+								<input type="number" class="form-control" data-ng-model="giverAmount" placeholder="Monto">
 							</div>
 						</div>	
 
@@ -47,17 +48,19 @@
 	<div class="content col-md-3" data-ng-show=" birthdayFund.usersGivers.length > 0">
 		<div id="friendResults" class="table-striped">
 			<div class="content text-right">
-				<h4>Quienes Colaboran</h4>
+				<h3>Quienes Colaboran</h3>
 			</div>
 			<div ng-repeat="giver in birthdayFund.usersGivers" class="list-group-item">
 				<div class="row">
-		            <div class="col-md-6">
-		            	<h4 class="list-group-item-heading" data-ng-bind="giver.displayName"></h4><br> 
-		            	<input name="Eliminar" type="image" ng-src="modules/core/img/brand/eliminar.jpg" width="25" height="25" ng-click="removeGiver(giver.username)"></p>
-		            </div>
-		        	<div class="col-md-6">              
+		            <div class="col-md-6">              
 		            	<img alt="User" class="img-circle text-left img-responsive" width="80" height="65" ng-src="http://fotos.hexacta.com:8181/photo.php?username={{giver.username}}" />
 		            </div>
+		            <div class="col-md-6">
+		            	<h4 class="list-group-item-heading" data-ng-bind="giver.displayName"></h4><br> 
+		            	<label class="control-label">Aporta: $ {{giver.amount}}</label>
+		            	<input name="Eliminar" type="image" ng-src="modules/core/img/brand/eliminar.jpg" width="25" height="25" ng-click="removeGiver(giver.username)"></p>
+		            </div>
+		        	
 		        </div>
 		    </div>
 		</div> 	
