@@ -1,12 +1,13 @@
 'use strict';
 //Scheduler create users 
 var schedule = require('node-schedule');
-var ldap = require('ldapjs');
-var lector = require('../users.lectorLDAP.server.controller');
 var mongoose = require('mongoose'),
-	 User = mongoose.model('User');
+	User = mongoose.model('User');
+var request = require('request');
+var fs = require('fs');	 
 
-function buscarUsuarios(opts,client){
+//Generacion con LDAP
+/*function generarUsuarios(opts,client){
 	lector.lectorArchivo();
 	client.search(lector.getDN(), opts, function(err, res) {
 	var lista = res.on('searchEntry', function(entry) {
@@ -26,28 +27,42 @@ function buscarUsuarios(opts,client){
 			});	
 		});
 	});
+}*/
+
+
+function generarUsuario() {
+	process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+	request('https://hrs.hexacta.com/hrs-intranet/services/employees/all', function (error, response, body) {
+	  if (!error && response.statusCode === 200) {
+	  	var jsonObject = JSON.parse(body);
+	  	jsonObject.forEach(function(obj) {
+	  		User.findOne().where('username').equals(obj.username).exec(function(err, user){
+				if (!user) {
+					var newUser = new User({
+						firstName: obj.firstName,
+						lastName: obj.lastName,
+						displayName: obj.firstName +' ' + obj.lastName,
+						email: obj.username+'@hexacta.com',
+						username: obj.username,
+						birthday: obj.dateOfBirth,
+						usersFriends : []
+						});
+					newUser.save();
+					fs.appendFile('usuariosCreados.txt', obj.username.toString() + '\n', function (err) {}); 
+				}
+			});
+		});
+	   }
+	if(error) {
+  		console.log(error);
+  	}
+	});
 }
 
 
-
-function obtenerUsuario(){
-	lector.lectorArchivo();
-	ldap.Attribute.settings.guid_format = ldap.GUID_FORMAT_B;	
-	var client = ldap.createClient({
-	  url: lector.getURL()
-	});
-
-
-	client.bind(lector.getUser(), lector.getPass(), function(err) {
-	  	console.log('Conectado a LDAP!');
-	});
-	var opts = {
-	  scope: 'one'
-	};
-	buscarUsuarios(opts, client);
-}
 
 exports.registroDeUsuarios = function(){
-	schedule.scheduleJob('0 0 * * *', obtenerUsuario());
+	//generarUsuario();
+	//schedule.scheduleJob('0 0 * * *', generarUsuario());
 };
 

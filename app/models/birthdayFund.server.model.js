@@ -10,10 +10,6 @@ var mongoose = require('mongoose'),
  * Birthday Fund Schema
  */
 var BirthdayFundSchema = new Schema({
-	id: {
-		type: Number,
-		default: 0
-	},
 	firstname: {
 		type: String,
 		default: ''
@@ -31,12 +27,16 @@ var BirthdayFundSchema = new Schema({
 		default: Date.now
 	},
 	usersCollecting: {
-		type: [{name: {type: String}}]
+		type: [{firstname: {type: String}},
+				{username: {type: String}}]
 	},
 	usersGivers: {
-		type: [{name: {type: String}},
-			   {amount: {type: Number,
-						default: 0}}]
+		type: [{
+				displayName: {type: String},
+				username: {type: String},
+			    amount: {type: Number,
+						 default: 0}
+				}]
 	},
 	collectingDateLimit: {
 		type: String

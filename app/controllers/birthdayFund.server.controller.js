@@ -27,9 +27,15 @@ function getListOfBirthdayFund(){
 }
 
 //Borrar cuando se trabaje con datos reales
-function getBirthday(id){
-
-	return listOfBirthdayFund[id];
+function getBirthday(req, res, next ,id){
+	console.log('***ID de birthdayFund a editar: ' + id);
+	BirthdayFund.findOne().where('_id').equals(id).exec(function(err, birthdayFund) {
+		if (err) return next(err);
+		if (!birthdayFund) return next(new Error('Failed to load BirthdayFund ' + id));
+		req.birthdayFund = birthdayFund;
+		next();
+	});
+	//return listOfBirthdayFund[id];
 }
 
 /**
@@ -39,14 +45,19 @@ exports.update = function(req, res) {
 
 	console.log('update(): ' + JSON.stringify(req.body));
 
-	var birthdayFund = new BirthdayFund();
+	var birthdayFund = req.birthdayFund;
+	var message = null;
+
+	birthdayFund = _.extend(birthdayFund, req.body);
 
 	birthdayFund.save(function(err) {
 		if (err) {
+			console.log('********Error en el Update');
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			console.log('***********No Error Update');
 			res.jsonp(birthdayFund);
 		}
 	});
@@ -55,14 +66,14 @@ exports.update = function(req, res) {
 /**
  * List of BirthdayFunds
  */
-exports.list = function(req, res) { 
+exports.list = function(req, res) {
 	BirthdayFund.find().where('username').ne(req.user.username).sort('-birthday').exec(function(err, birthdayFunds) {
-		if (err) {
+		if(err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(getListOfBirthdayFund());
+			res.jsonp(birthdayFunds);
 		}
 	});
 };
@@ -96,8 +107,7 @@ exports.hasAuthorization = function(req, res, next) {
 exports.beginFund = function(req, res, next, id) {
 
 	// Usar cuando se trabaje con datos reales
-	/*BirthdayFund.findOne().where('id').equals(id).exec(function(err, birthdayFund) {
-		console.log('getBirthday()');
+	BirthdayFund.findOne().where('_id').equals(id).exec(function(err, birthdayFund) {
 		if (err) return next(err);
 		if (! birthdayFund){
 
@@ -105,8 +115,29 @@ exports.beginFund = function(req, res, next, id) {
 		} 
 		req.birthdayFund = birthdayFund ;
 		next();
-	});*/
-	req.birthdayFund = getBirthday(id);
+	});
+	/*req.birthdayFund = getBirthday(req, res, next, id);
+	next();*/
+};
+
+exports.editFund = function(req, res, next, id) {
+
+	// Usar cuando se trabaje con datos reales
+	BirthdayFund.findOne().where('_id').equals(id).exec(function(err, birthdayFund) {
+		if (err) return next(err);
+		if (! birthdayFund){
+
+			 next(new Error('Failed to load BirthdayFund ' + id));	
+		} 
+		req.birthdayFund = birthdayFund ;
+		next();
+	});
+	/*req.birthdayFund = getBirthday(req, res, next, id);
+	next();*/
+};
+
+exports.changeFund = function(req, res, next, id) {
+	req.birthdayFund = getBirthday(req, res, next, id);
 	next();
 };
 
