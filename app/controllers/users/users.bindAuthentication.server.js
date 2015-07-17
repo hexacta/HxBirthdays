@@ -32,4 +32,4 @@ exports.loginLDAP = function(req,res){
 	});
 
 	return res;
-	};
+};
